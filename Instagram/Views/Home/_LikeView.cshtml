@@ -1,0 +1,8 @@
+﻿@using Instagram.ViewModel.Feed;
+@model FeedCommentLikeSummary
+@Ajax.ActionLink(Model.Liked ? "Bỏ Thích" : "Thích", Model.Liked ? "UnlikeComment" : "LikeComment", new { feedCommentId = Model.FeedCommentId }, new AjaxOptions
+{
+    UpdateTargetId = "commentCommandBox" + Model.FeedCommentId,
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "POST"
+})

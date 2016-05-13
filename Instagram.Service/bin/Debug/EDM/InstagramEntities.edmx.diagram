@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="3632b1a2d11b4c0597bb0430c2702def" Name="Diagram1" ZoomLevel="50" >
+        <EntityTypeShape EntityType="InstagramModel.Feed" Width="1.5" PointX="3" PointY="3.75" />
+        <EntityTypeShape EntityType="InstagramModel.FeedComment" Width="1.5" PointX="5.25" PointY="0.75" />
+        <EntityTypeShape EntityType="InstagramModel.FeedCommentLike" Width="1.5" PointX="7.5" PointY="2.5" />
+        <EntityTypeShape EntityType="InstagramModel.FeedLike" Width="1.5" PointX="5.25" PointY="4" />
+        <EntityTypeShape EntityType="InstagramModel.User" Width="1.5" PointX="0.75" PointY="3.875" />
+        <AssociationConnector Association="InstagramModel.FK_Feed_User" />
+        <AssociationConnector Association="InstagramModel.FK_FeedComment_Feed" />
+        <AssociationConnector Association="InstagramModel.FK_FeedLike_Feed" />
+        <AssociationConnector Association="InstagramModel.FK_FeedComment_User" />
+        <AssociationConnector Association="InstagramModel.FK_FeedCommentLike_FeedComment" />
+        <AssociationConnector Association="InstagramModel.FK_FeedCommentLike_User" />
+        <AssociationConnector Association="InstagramModel.FK_FeedLike_User" />
+        <EntityTypeShape EntityType="InstagramModel.File" Width="1.5" PointX="8.25" PointY="5.5" />
+        <EntityTypeShape EntityType="InstagramModel.FileFolder" Width="1.5" PointX="6" PointY="9.375" />
+        <EntityTypeShape EntityType="InstagramModel.FileType" Width="1.5" PointX="6" PointY="7" />
+        <AssociationConnector Association="InstagramModel.FK_File_Feed" />
+        <AssociationConnector Association="InstagramModel.FK_File_FileFolder" />
+        <AssociationConnector Association="InstagramModel.FK_File_FileType" />
+        <EntityTypeShape EntityType="InstagramModel.UserFollow" Width="1.5" PointX="3" PointY="8.125" />
+        <AssociationConnector Association="InstagramModel.FK_UserFollow_User" />
+        <AssociationConnector Association="InstagramModel.FK_UserFollow_User1" />
+        <EntityTypeShape EntityType="InstagramModel.AspNetUser" Width="1.5" PointX="8.375" PointY="9.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

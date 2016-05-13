@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mạng xã hội chia sẻ ảnh</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Moments.vn", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @class = "navbar-form" }))
+                        {
+                            <div class="form-group">
+                                @Html.TextBox("searchTerm", "", new { @id = "searchTerm", @class = "form-control", placeholder = "Tìm kiếm..." })
+                            </div>
+                        }
+                    </li>
+
+                    <li>
+                        <a href="@Url.Action("Index","Home")">
+                            <i class="glyphicon glyphicon-home"></i>Trang chủ
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#postModel" role="button" data-toggle="modal">
+                            <i class="glyphicon glyphicon-plus"></i>Thêm ảnh
+                        </a>
+                        @*<button id="open_btn" class="btn btn-primary">Open dialog</button>*@
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <!-- Upload Modal -->
+    <div id="postModel" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Đăng ảnh</h4>
+                </div>
+                @using (Html.BeginForm("PostPhoto", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @class = "dropzone", id = "photo" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="modal-body">
+                        <textarea class="form-control input-lg" name="Caption" autofocus placeholder="Nội dung chú thích ảnh của bạn"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <ul class="pull-left list-inline">
+                            <li><input type="file" id="photo" name="photo" multiple accept=".jpg, .png,.jpeg, .gif" /></li>
+                        </ul>
+                        <button type="submit" class="btn btn-primary">Đăng</button>
+                    </div>
+                }
+                @*<form action="~/Home/SaveUploadedFile" method="post" enctype="multipart/form-data" class="dropzone" id="dropzoneForm" style="width: 50px; background: none; border: none;">
+                        <div class="fallback">
+                            <input name="file" type="file" multiple />
+                            <input type="submit" value="Upload" />
+                        </div>
+                    </form>*@
+
+                @*<div class="table table-striped files" id="previews">
+
+                    <div id="template" class="file-row">
+                        <!-- This is used as the file preview template -->
+                        <div>
+                            <span class="preview"><img data-dz-thumbnail /></span>
+                        </div>
+                        <div>
+                            <p class="name" data-dz-name></p>
+                            <strong class="error text-danger" data-dz-errormessage></strong>
+                        </div>
+                        <div>
+                            <p class="size" data-dz-size></p>
+                            <div class="progress progress-striped active" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                                <div class="progress-bar progress-bar-success" style="width:0%;" data-dz-uploadprogress></div>
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-primary start">
+                                <i class="glyphicon glyphicon-upload"></i>
+                                <span>Start</span>
+                            </button>
+                            <button data-dz-remove class="btn btn-warning cancel">
+                                <i class="glyphicon glyphicon-ban-circle"></i>
+                                <span>Cancel</span>
+                            </button>
+                            <button data-dz-remove class="btn btn-danger delete">
+                                <i class="glyphicon glyphicon-trash"></i>
+                                <span>Delete</span>
+                            </button>
+                        </div>
+                    </div>
+
+                                </div>*@
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p class="text-center">&copy; @DateTime.Now.Year - Moments.vn</p>
+        </footer>
+    </div>
+    <div id="modal-container" class="modal fade"
+         tabindex="-1" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/dropzone")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

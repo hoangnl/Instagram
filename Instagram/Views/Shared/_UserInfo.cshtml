@@ -1,0 +1,17 @@
+﻿@model Instagram.ViewModel.Feed.UserViewModel
+
+<div class="modal-body">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-6">
+                    <img src="@Url.Content("~/UserPhoto/Avatar/" + Model.Avartar)" class="userinfo img-responsive" alt="Avatar" />
+                </div>
+                @if (User.Identity.Name != Model.FullName)
+                {
+                    <div class="col-md-6"><button type="button" class="btn btn-primary">Follow</button></div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

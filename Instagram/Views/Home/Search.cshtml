@@ -1,0 +1,28 @@
+﻿@model IEnumerable<Instagram.ViewModel.Feed.UserViewModel>
+
+@{
+    ViewBag.Title = "Search";
+}
+
+<h2>Kết quả tìm kiếm</h2>
+
+<div class="result row">
+    @foreach (var item in Model)
+    {
+        <div class="itemResult col-sm-6 col-lg-offset-3">
+            <div class="col-sm-8">
+                <div class="user">
+                    <a href="#">
+                        <img src="@Url.Content("~/UserPhoto/Avatar/" + item.Avartar)" class="img-responsive" alt="Avatar" />
+                    </a>
+                    <div class="user-detail">
+                        <h7><a href="#" title="@item.FullName" class="user-avatar">@item.FullName</a></h7>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-sm-4"><button type="button" class="btn btn-primary">Follow</button></div>
+        </div>
+    }
+</div>
+

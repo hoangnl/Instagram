@@ -1,0 +1,116 @@
+﻿@using Instagram.ViewModel.Feed;
+@model IEnumerable<FeedViewModel>
+@{
+    ViewBag.Title = "News feed";
+}
+
+<div class="col-sm12 padding-top">
+    <div class="row">
+        <div class="col-sm-3"></div>
+        <div class="col-sm-6" id="newFeedsList">
+            @Html.Partial("_FeedView", Model)
+            <div id="loading">
+                <img src='@Url.Content("~/images/spin.gif")' /><p><b>Đang tải dữ liệu...</b></p>
+            </div>
+        </div>
+        <div class="col-sm-3"></div>
+    </div>
+</div>
+<div id="confirmDialog" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Xác nhận</h4>
+            </div>
+            <div class="modal-body">
+                Bạn có chắc chắn muốn xóa bình luận này không?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn" data-dismiss="modal">Hủy</button>
+                <button type="button" id="deleteComment" data-dismiss="modal" class="btn btn-primary">Xóa</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="modal-container" class="modal fade" role="dialog">
+    <div class="modal-content">
+    </div>
+</div>
+
+
+
+@section scripts{
+    <script src="~/Scripts/Feed/instagram.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("div#loading").hide();
+        });
+        var moreRowsUrl = "/Home/GetFeedPaging";
+        $(window).scroll(scrollHandler);
+
+        $("#open_btn").click(function () {
+            $.FileDialog({ multiple: true }).on('files.bs.filedialog', function (ev) {
+                var files = ev.files;
+                var text = "";
+                files.forEach(function (f) {
+                    text += f.name + "<br/>";
+                });
+                $("#output").html(text);
+            }).on('cancel.bs.filedialog', function (ev) {
+                $("#output").html("Cancelled!");
+            });
+        });
+
+        //Dropzone.options.dropzoneForm = {
+        //    init: function () {
+        //        this.on("complete", function (data) {
+        //            //var res = eval('(' + data.xhr.responseText + ')');
+        //            var res = JSON.parse(data.xhr.responseText);
+        //        });
+        //    }
+        //};
+
+        Dropzone.options.photo = { // The camelized version of the ID of the form element
+
+            // The configuration we've talked about above
+            paramName: "inputFiles",
+            autoProcessQueue: false,
+            uploadMultiple: true,
+            parallelUploads: 100,
+            maxFiles: 100,
+
+            // The setting up of the dropzone
+            init: function () {
+                var myDropzone = this;
+
+                // First change the button to actually tell Dropzone to process the queue.
+                this.element.querySelector("button[type=submit]").addEventListener("click", function (e) {
+                    // Make sure that the form isn't actually being sent.
+                    e.preventDefault();
+                    e.stopPropagation();
+                    myDropzone.processQueue();
+                });
+
+                // Listen to the sendingmultiple event. In this case, it's the sendingmultiple event instead
+                // of the sending event because uploadMultiple is set to true.
+                this.on("sendingmultiple", function () {
+                    // Gets triggered when the form is actually being sent.
+                    // Hide the success button or the complete form.
+                });
+                this.on("successmultiple", function (files, response) {
+                    // Gets triggered when the files have successfully been sent.
+                    // Redirect user or notify of success.
+                });
+                this.on("errormultiple", function (files, response) {
+                    // Gets triggered when there was an error sending the files.
+                    // Maybe show form again, and notify user of error
+                });
+            }
+
+        }
+    </script>
+}

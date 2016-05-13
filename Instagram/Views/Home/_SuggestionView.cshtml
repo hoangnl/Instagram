@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Instagram.ViewModel.Feed.UserViewModel>
+<div class="panel panel-default">
+    <div class="panel-heading">
+        <h5>GỢI Ý CHO BẠN</h5>
+    </div>
+    <ul class="list-group">
+        @foreach (var user in Model)
+        {
+            <li class="list-group-item">
+                <div class="suggestion">
+                    <div class="user">
+                        <a href="#">
+                            <img src="@Url.Content("~/UserPhoto/Avatar/" + user.Avartar)" alt="" class="img-responsive user-avatar" />
+                        </a>
+                        <div class="user-detail">
+                            @user.FullName
+                            <div class="pull-right">
+                                <div id="UserFollow@(user.UserId)">
+                                    @Html.Partial("_FollowView", user)
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="user-photo">
+                            <img src="@Url.Content(user.Feeds.FirstOrDefault().Files.FirstOrDefault().PhotoLink)" alt="" class="img-responsive" />
+                        </div>
+                    </div>
+                </div>
+            </li>
+        }
+    </ul>
+    <div class="panel-footer">
+        <div class="text-center">
+            @Html.ActionLink("Bắt đầu sử dụng", "Index", null, new { @class = "btn btn-success" })
+        </div>
+    </div>
+</div>
+
+

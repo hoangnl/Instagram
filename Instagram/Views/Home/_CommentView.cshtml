@@ -1,0 +1,22 @@
+﻿@using Instagram.ViewModel.Feed;
+@model FeedCommentViewModel
+<div class="user" id="commentBox@(Model.FeedCommentId)">
+    <button type="button" class="close" data-toggle="modal" data-id="@Model.FeedCommentId" data-target="#confirmDialog"><span aria-hidden="true" aria-label="Close">&times;</span></button>
+    <a href="/Profile/Detail/@Model.User.UserName">
+        <img class="img-responsive user-avatar" alt="Avatar" src="@Url.Content("~/UserPhoto/Avatar/" + Model.User.Avartar)" />
+    </a>
+    <div class="user-detail">
+        <h7>
+            <a href="/Profile/Detail/@Model.User.UserName" title="@Model.User.FullName">@Model.User.FullName</a>
+
+        </h7>
+        @Model.Content
+        @*<div>
+                @Html.Partial("_LikeView")
+            </div>*@
+
+        <div>
+            <a href="">@Model.FeedCommentLikes.Count() thích</a> - @Model.CreatedTime
+        </div>
+    </div>
+</div>

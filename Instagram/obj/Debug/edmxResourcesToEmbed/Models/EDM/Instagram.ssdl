@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="InstagramModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Feed">
+    <Key>
+      <PropertyRef Name="FeedId" />
+    </Key>
+    <Property Name="FeedId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+    <Property Name="Caption" Type="nvarchar" MaxLength="1000" Nullable="false" />
+    <Property Name="PhotoLink" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FeedComment">
+    <Key>
+      <PropertyRef Name="FeedCommentId" />
+    </Key>
+    <Property Name="FeedCommentId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FeedId" Type="bigint" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Content" Type="nvarchar" MaxLength="500" Nullable="false" />
+    <Property Name="CreatedTime" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FeedCommentLike">
+    <Key>
+      <PropertyRef Name="FeedCommentLikeId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="FeedCommentLikeId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FeedCommentId" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="FeedLike">
+    <Key>
+      <PropertyRef Name="FeedLikeId" />
+    </Key>
+    <Property Name="FeedLikeId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FeedId" Type="bigint" Nullable="false" />
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="255" Nullable="false" />
+    <Property Name="Avartar" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Feed_User">
+    <End Role="User" Type="Self.User" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="Feed" Type="Self.Feed" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Feed">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FeedComment_Feed">
+    <End Role="Feed" Type="Self.Feed" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FeedComment" Type="Self.FeedComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Feed">
+        <PropertyRef Name="FeedId" />
+      </Principal>
+      <Dependent Role="FeedComment">
+        <PropertyRef Name="FeedId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FeedComment_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="FeedComment" Type="Self.FeedComment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="FeedComment">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FeedCommentLike_FeedComment">
+    <End Role="FeedComment" Type="Self.FeedComment" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FeedCommentLike" Type="Self.FeedCommentLike" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="FeedComment">
+        <PropertyRef Name="FeedCommentId" />
+      </Principal>
+      <Dependent Role="FeedCommentLike">
+        <PropertyRef Name="FeedCommentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FeedCommentLike_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="FeedCommentLike" Type="Self.FeedCommentLike" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="FeedCommentLike">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FeedLike_Feed">
+    <End Role="Feed" Type="Self.Feed" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="FeedLike" Type="Self.FeedLike" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Feed">
+        <PropertyRef Name="FeedId" />
+      </Principal>
+      <Dependent Role="FeedLike">
+        <PropertyRef Name="FeedId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_FeedLike_User">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="FeedLike" Type="Self.FeedLike" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="FeedLike">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="InstagramModelStoreContainer">
+    <EntitySet Name="Feed" EntityType="Self.Feed" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FeedComment" EntityType="Self.FeedComment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FeedCommentLike" EntityType="Self.FeedCommentLike" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FeedLike" EntityType="Self.FeedLike" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Feed_User" Association="Self.FK_Feed_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="Feed" EntitySet="Feed" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FeedComment_Feed" Association="Self.FK_FeedComment_Feed">
+      <End Role="Feed" EntitySet="Feed" />
+      <End Role="FeedComment" EntitySet="FeedComment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FeedComment_User" Association="Self.FK_FeedComment_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="FeedComment" EntitySet="FeedComment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FeedCommentLike_FeedComment" Association="Self.FK_FeedCommentLike_FeedComment">
+      <End Role="FeedComment" EntitySet="FeedComment" />
+      <End Role="FeedCommentLike" EntitySet="FeedCommentLike" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FeedCommentLike_User" Association="Self.FK_FeedCommentLike_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="FeedCommentLike" EntitySet="FeedCommentLike" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FeedLike_Feed" Association="Self.FK_FeedLike_Feed">
+      <End Role="Feed" EntitySet="Feed" />
+      <End Role="FeedLike" EntitySet="FeedLike" />
+    </AssociationSet>
+    <AssociationSet Name="FK_FeedLike_User" Association="Self.FK_FeedLike_User">
+      <End Role="User" EntitySet="User" />
+      <End Role="FeedLike" EntitySet="FeedLike" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

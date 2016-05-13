@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="InstagramModelStoreContainer" CdmEntityContainer="InstagramEntities">
+    <EntitySetMapping Name="Feeds">
+      <EntityTypeMapping TypeName="InstagramModel.Feed">
+        <MappingFragment StoreEntitySet="Feed">
+          <ScalarProperty Name="PhotoLink" ColumnName="PhotoLink" />
+          <ScalarProperty Name="Caption" ColumnName="Caption" />
+          <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FeedId" ColumnName="FeedId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FeedComments">
+      <EntityTypeMapping TypeName="InstagramModel.FeedComment">
+        <MappingFragment StoreEntitySet="FeedComment">
+          <ScalarProperty Name="CreatedTime" ColumnName="CreatedTime" />
+          <ScalarProperty Name="Content" ColumnName="Content" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FeedId" ColumnName="FeedId" />
+          <ScalarProperty Name="FeedCommentId" ColumnName="FeedCommentId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FeedCommentLikes">
+      <EntityTypeMapping TypeName="InstagramModel.FeedCommentLike">
+        <MappingFragment StoreEntitySet="FeedCommentLike">
+          <ScalarProperty Name="FeedCommentId" ColumnName="FeedCommentId" />
+          <ScalarProperty Name="FeedCommentLikeId" ColumnName="FeedCommentLikeId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FeedLikes">
+      <EntityTypeMapping TypeName="InstagramModel.FeedLike">
+        <MappingFragment StoreEntitySet="FeedLike">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="FeedId" ColumnName="FeedId" />
+          <ScalarProperty Name="FeedLikeId" ColumnName="FeedLikeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="InstagramModel.User">
+        <MappingFragment StoreEntitySet="User">
+          <ScalarProperty Name="Avartar" ColumnName="Avartar" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Files">
+      <EntityTypeMapping TypeName="InstagramModel.File">
+        <MappingFragment StoreEntitySet="File">
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="FeedId" ColumnName="FeedId" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="FileTypeId" ColumnName="FileTypeId" />
+          <ScalarProperty Name="RealFileName" ColumnName="RealFileName" />
+          <ScalarProperty Name="FileFolderId" ColumnName="FileFolderId" />
+          <ScalarProperty Name="FileName" ColumnName="FileName" />
+          <ScalarProperty Name="FileId" ColumnName="FileId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FileFolders">
+      <EntityTypeMapping TypeName="InstagramModel.FileFolder">
+        <MappingFragment StoreEntitySet="FileFolder">
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="Path" ColumnName="Path" />
+          <ScalarProperty Name="FileFolderId" ColumnName="FileFolderId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FileTypes">
+      <EntityTypeMapping TypeName="InstagramModel.FileType">
+        <MappingFragment StoreEntitySet="FileType">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="FileTypeId" ColumnName="FileTypeId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserFollows">
+      <EntityTypeMapping TypeName="InstagramModel.UserFollow">
+        <MappingFragment StoreEntitySet="UserFollow">
+          <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+          <ScalarProperty Name="FollowDate" ColumnName="FollowDate" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="UserFollowId" ColumnName="UserFollowId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AspNetUsers">
+      <EntityTypeMapping TypeName="InstagramModel.AspNetUser">
+        <MappingFragment StoreEntitySet="AspNetUsers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

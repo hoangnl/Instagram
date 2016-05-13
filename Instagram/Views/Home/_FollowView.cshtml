@@ -1,0 +1,7 @@
+﻿@model Instagram.ViewModel.Feed.UserViewModel
+@Ajax.ActionLink(Model.Following ? "Ngừng theo dõi" : "Theo dõi", Model.Following ? "Unfollow" : "Follow", new { userId = Model.UserId }, new AjaxOptions()
+{
+    UpdateTargetId = "UserFollow" + Model.UserId,
+    InsertionMode = InsertionMode.Replace,
+    HttpMethod = "Post"
+}, new { @class = "btn btn-primary" })

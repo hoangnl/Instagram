@@ -1,0 +1,189 @@
+﻿body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    background-color: #F8F8F8;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+
+
+.navbar {
+    background: #428bca;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    background: #428bca;
+    color: white;
+}
+
+.navbar-brand {
+    background: #428bca;
+    color: white !important;
+}
+
+.padding-top {
+    padding-top: 20px;
+}
+
+.user {
+    margin: 0 0 20px 0;
+}
+
+    .user .user-avatar {
+        width: 42px;
+        height: 42px;
+        float: left;
+    }
+
+
+.user-detail {
+    margin-left: 60px;
+}
+
+
+
+.follow {
+    float: right;
+}
+
+.itemResult {
+    padding: 5px;
+}
+
+#postModel > div > div > div.modal-body > textarea {
+    max-width: 100%;
+}
+
+#postModel > div > div > div.modal-body {
+    padding: 10px;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+
+    .btn-file input[type=file] {
+        position: absolute;
+        top: 0;
+        right: 0;
+        min-width: 100%;
+        min-height: 100%;
+        font-size: 100px;
+        text-align: right;
+        filter: alpha(opacity=0);
+        opacity: 0;
+        outline: none;
+        background: white;
+        cursor: inherit;
+        display: block;
+    }
+
+#postModel > div > div > div.modal-header {
+    background-color: #36CFE9;
+}
+
+#photo {
+    display: inline;
+}
+
+.comment-panel {
+    background-color: #F8F8F8;
+    padding: 10px;
+}
+
+.like-count {
+    background-color: #F8F8F8;
+    padding: 10px;
+}
+
+.form {
+    background: #fff;
+    max-width: 350px;
+    margin: -20px auto 0;
+    padding: 30px;
+    border-radius: 3px;
+}
+
+    .form .info {
+        color: #428bca;
+        text-align: center;
+    }
+
+    .form .login-input {
+        background: #F8F8F8;
+        width: 100%;
+        height: 50px;
+        padding: 15px;
+        border-radius: 3px;
+        font-size: 14px;
+    }
+
+    .form .btn-command {
+        background: #36CFE9;
+        width: 100%;
+        padding: 15px;
+        border-radius: 3px;
+        font-size: 14px;
+        color: white;
+    }
+
+        .form .btn-command:hover {
+            background: #428bca;
+        }
+
+.modal-link {
+    cursor: pointer;
+}
+
+
+.modal-content {
+    width: 600px !important;
+    margin: 80px auto !important;
+}
+
+.popover {
+    max-width: 100%; /* Max Width of the popover (depending on the container!) */
+}
+
+.userinfo.img-responsive {
+    width: 200px !important;
+    height: auto !important;
+}
+
+.suggestion .user .user-detail {
+    font-weight: bold;
+    margin: 10px !important;
+}
+
+.suggestion .user .user-photo {
+    padding: 20px 0;
+}
+
+.liked {
+    /*padding: 0;*/
+}
+
+    .liked.likedList {
+        padding-top: 45px;
+    }
+/*.dropzone {
+    background: gray;
+    border: black dashed 3px;
+    width: 100%;
+    padding: 50px;
+    text-align: center;
+    color: white;
+}*/
