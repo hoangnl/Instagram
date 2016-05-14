@@ -1,9 +1,0 @@
-C:\Users\HOANG\Documents\Visual Studio 2015\Projects\Instagram\Instagram.ViewModel\bin\Debug\Instagram.ViewModel.dll
-C:\Users\HOANG\Documents\Visual Studio 2015\Projects\Instagram\Instagram.ViewModel\bin\Debug\Instagram.ViewModel.pdb
-C:\Users\HOANG\Documents\Visual Studio 2015\Projects\Instagram\Instagram.ViewModel\obj\Debug\Instagram.ViewModel.csprojResolveAssemblyReference.cache
-C:\Users\HOANG\Documents\Visual Studio 2015\Projects\Instagram\Instagram.ViewModel\obj\Debug\Instagram.ViewModel.dll
-C:\Users\HOANG\Documents\Visual Studio 2015\Projects\Instagram\Instagram.ViewModel\obj\Debug\Instagram.ViewModel.pdb
-C:\Users\HOANG\Documents\Visual Studio 2015\Projects\Instagram\Instagram.ViewModel\bin\Debug\Instagram.Common.dll
-C:\Users\HOANG\Documents\Visual Studio 2015\Projects\Instagram\Instagram.ViewModel\bin\Debug\Instagram.Common.pdb
-C:\Users\HOANG\Documents\Visual Studio 2015\Projects\Instagram\Instagram.ViewModel\bin\Debug\AutoMapper.dll
-C:\Users\HOANG\Documents\Visual Studio 2015\Projects\Instagram\Instagram.ViewModel\bin\Debug\AutoMapper.xml
