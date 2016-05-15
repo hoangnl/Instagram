@@ -246,6 +246,7 @@
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-theme.min.css.map" />
     <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="Properties\PublishProfiles\Insta.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\dropzone\basic.css" />
     <Content Include="Scripts\dropzone\basic.min.css" />
@@ -274,7 +275,6 @@
     <Content Include="Scripts\typeahead.bundle.min.js" />
     <Content Include="Scripts\typeahead.jquery.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="UserPhoto\Avatar\hoang.jpg" />
     <Content Include="UserPhoto\Photo\Photo.jpg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -327,7 +327,9 @@
     <Content Include="Views\Profile\Detail.cshtml" />
     <Content Include="Views\Home\_LikedUserList.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="UserPhoto\Avatar\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
