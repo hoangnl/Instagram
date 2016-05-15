@@ -302,3 +302,11 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+*.pdb
+*.pdb
+*.pdb
+*.dll
+Instagram/bin/Instagram.ViewModel.dll
+Instagram/bin/Instagram.Service.pdb
+*.pdb
+Instagram/bin/Instagram.Model.pdb

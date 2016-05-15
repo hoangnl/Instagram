@@ -22,7 +22,9 @@ namespace Instagram
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
-                      "~/Scripts/typeahead.jquery.js"));
+                      "~/Scripts/typeahead.bundle*",
+                      "~/Scripts/bloodhound*",
+                      "~/Scripts/typeahead.jquery*"));
 
             bundles.Add(new ScriptBundle("~/bundles/dropzone").Include(
                       "~/Scripts/dropzone/dropzone.min.js",
