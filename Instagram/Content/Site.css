@@ -20,16 +20,16 @@
 
 
 .navbar {
-    background: #428bca;
+    background: #365899;
 }
 
 .navbar-inverse .navbar-nav > li > a {
-    background: #428bca;
+    background: #365899;
     color: white;
 }
 
 .navbar-brand {
-    background: #428bca;
+    background: #365899;
     color: white !important;
 }
 
@@ -92,12 +92,12 @@
     }
 
 #postModel > div > div > div.modal-header {
-    background-color: #36CFE9;
+    background-color: #365899;
 }
 
-#photo {
+/*#photo {
     display: inline;
-}
+}*/
 
 .comment-panel {
     background-color: #F8F8F8;
@@ -118,7 +118,7 @@
 }
 
     .form .info {
-        color: #428bca;
+        color: #365899;
         text-align: center;
     }
 
@@ -132,7 +132,7 @@
     }
 
     .form .btn-command {
-        background: #36CFE9;
+        background: #365899;
         width: 100%;
         padding: 15px;
         border-radius: 3px;
@@ -141,7 +141,7 @@
     }
 
         .form .btn-command:hover {
-            background: #428bca;
+            background: #365899;
         }
 
 .modal-link {
@@ -187,3 +187,15 @@
     text-align: center;
     color: white;
 }*/
+.caption {
+    margin-bottom: 10px;
+}
+
+.command-link {
+    border-top: 1px solid rgba(128, 128, 128, 0.45);
+    margin-top: 10px;
+}
+
+.commandBox {
+    margin-top: 10px;
+}

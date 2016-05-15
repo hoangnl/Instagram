@@ -1,12 +1,13 @@
 ﻿@using Instagram.ViewModel.Feed;
 @model FeedLikeSummary
-@Ajax.ActionLink(Model.Liked ? "Bỏ Thích" : "Thích", Model.Liked ? "Unlike" : "Like", new { feedId = Model.FeedId }, new AjaxOptions
+<i class='glyphicon glyphicon-thumbs-up'></i>
+@Ajax.ActionLink((Model.Liked ? "Bỏ Thích" : "Thích"), Model.Liked ? "Unlike" : "Like", new { feedId = Model.FeedId }, new AjaxOptions
 {
     UpdateTargetId = "commandBox" + Model.FeedId,
     InsertionMode = InsertionMode.Replace,
     HttpMethod = "POST"
-})-
-<a href="javascript:comment('commentInput@(Model.FeedId)')">Bình luận</a>
+}) -
+<a href="javascript:comment('commentInput@(Model.FeedId)')"><i class="glyphicon glyphicon-comment"></i><span> Bình luận</span></a>
 @if (Model.TotalLike > 0)
 {
     <div class="like-count">

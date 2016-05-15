@@ -10,7 +10,7 @@ namespace Instagram
         {
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js", "~/Scripts/jquery.unobtrusive-ajax.min.js"));
-          
+
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
                         "~/Scripts/jquery.validate*"));
 
@@ -22,7 +22,7 @@ namespace Instagram
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js",
-                       "~/Scripts/bootstrap.fd.js"));
+                      "~/Scripts/typeahead.jquery.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/dropzone").Include(
                       "~/Scripts/dropzone/dropzone.min.js",
@@ -30,7 +30,9 @@ namespace Instagram
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Scripts/dropzone/dropzone.css",
+                      "~/Scripts/dropzone/typeahead.css"));
         }
     }
 }

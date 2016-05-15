@@ -24,8 +24,8 @@
                     <li>
                         @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @class = "navbar-form" }))
                         {
-                            <div class="form-group">
-                                @Html.TextBox("searchTerm", "", new { @id = "searchTerm", @class = "form-control", placeholder = "Tìm kiếm..." })
+                            <div id="bloodhound" class="form-group">
+                                @Html.TextBox("searchTerm", "", new { @id = "searchTerm", @class = "form-control", placeholder = "Tìm kiếm...", data_provide = "typeahead" })
                             </div>
                         }
                     </li>
@@ -60,11 +60,12 @@
                     @Html.AntiForgeryToken()
                     <div class="modal-body">
                         <textarea class="form-control input-lg" name="Caption" autofocus placeholder="Nội dung chú thích ảnh của bạn"></textarea>
+                        <div class="dz-message" data-dz-message><span>Bạn có thể kéo ảnh hoặc click để chọn</span></div>
                     </div>
                     <div class="modal-footer">
-                        <ul class="pull-left list-inline">
-                            <li><input type="file" id="photo" name="photo" multiple accept=".jpg, .png,.jpeg, .gif" /></li>
-                        </ul>
+                        @*<ul class="pull-left list-inline">
+                                <li><input type="file" id="photo" name="photo" multiple accept=".jpg, .png,.jpeg, .gif" /></li>
+                            </ul>*@
                         <button type="submit" class="btn btn-primary">Đăng</button>
                     </div>
                 }
