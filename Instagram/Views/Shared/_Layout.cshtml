@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using Instagram.Helpers;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -6,7 +7,6 @@
     <title>@ViewBag.Title - Mạng xã hội chia sẻ ảnh</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -24,9 +24,9 @@
                     <li>
                         @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @class = "navbar-form" }))
                         {
-                            <div id="bloodhound" class="form-group">
-                                @Html.TextBox("searchTerm", "", new { @id = "searchTerm", @class = "form-control typeahead", placeholder = "Tìm kiếm...", data_provide = "typeahead" })
-                            </div>
+                        <div id="bloodhound" class="form-group">
+                            @Html.TextBox("searchTerm", "", new { @id = "searchTerm", @class = "form-control typeahead", placeholder = "Tìm kiếm...", data_provide = "typeahead" })
+                        </div>
                         }
                     </li>
 
@@ -57,17 +57,17 @@
                 </div>
                 @using (Html.BeginForm("PostPhoto", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @class = "dropzone", id = "photo" }))
                 {
-                    @Html.AntiForgeryToken()
-                    <div class="modal-body">
-                        <textarea class="form-control input-lg" name="Caption" autofocus placeholder="Nội dung chú thích ảnh của bạn"></textarea>
-                        <div class="dz-message" data-dz-message><span>Bạn có thể kéo ảnh hoặc click để chọn</span></div>
-                    </div>
-                    <div class="modal-footer">
-                        @*<ul class="pull-left list-inline">
-                                <li><input type="file" id="photo" name="photo" multiple accept=".jpg, .png,.jpeg, .gif" /></li>
-                            </ul>*@
-                        <button type="submit" class="btn btn-primary">Đăng</button>
-                    </div>
+                @Html.AntiForgeryToken()
+                <div class="modal-body">
+                    <textarea class="form-control input-lg" name="Caption" autofocus placeholder="Nội dung chú thích ảnh của bạn"></textarea>
+                    <div class="dz-message" data-dz-message><span>Bạn có thể kéo ảnh hoặc click để chọn</span></div>
+                </div>
+                <div class="modal-footer">
+                    @*<ul class="pull-left list-inline">
+                            <li><input type="file" id="photo" name="photo" multiple accept=".jpg, .png,.jpeg, .gif" /></li>
+                        </ul>*@
+                    <button type="submit" class="btn btn-primary">Đăng</button>
+                </div>
                 }
                 @*<form action="~/Home/SaveUploadedFile" method="post" enctype="multipart/form-data" class="dropzone" id="dropzoneForm" style="width: 50px; background: none; border: none;">
                         <div class="fallback">
@@ -127,9 +127,24 @@
             </div>
         </div>
     </div>
+    <span id="top-link-block" class="hidden">
+        <a href="#top" class="well well-sm" onclick="$('html,body').animate({scrollTop:0},'slow');return false;">
+            <i class="glyphicon glyphicon-chevron-up"></i> Back to Top
+        </a>
+    </span>
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/dropzone")
     @RenderSection("scripts", required: false)
+    <script>
+        // Only enable if the document has a long scroll bar
+        // Note the window height + offset
+        if (($(window).height() + 100) < $(document).height()) {
+            $('#top-link-block').removeClass('hidden').affix({
+                // how far to scroll down before link "slides" into view
+                offset: { top: 100 }
+            });
+        }
+    </script>
 </body>
 </html>

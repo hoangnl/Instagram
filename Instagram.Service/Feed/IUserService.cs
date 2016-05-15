@@ -18,5 +18,6 @@ namespace Instagram.Service.Feed
         bool Follow(string userId, string userFollowId);
         bool Unfollow(string userId, string userFollowId);
         IEnumerable<FeedLikeViewModel> GetLikedUserList(long feedId);
+        IEnumerable<UserViewModel> Autocomplete(string searchTerm);
     }
 }

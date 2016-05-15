@@ -207,6 +207,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\FileProcessor.cs" />
+    <Compile Include="Helpers\HtmlHelper.cs" />
     <Compile Include="Helpers\IUserHelper.cs" />
     <Compile Include="Helpers\IFileProcessor.cs" />
     <Compile Include="Helpers\UserHelper.cs" />

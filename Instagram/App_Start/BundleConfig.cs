@@ -33,8 +33,8 @@ namespace Instagram
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                      "~/Scripts/dropzone/dropzone.css",
-                      "~/Scripts/dropzone/typeahead.css"));
+                       "~/Content/typeahead.css",
+                      "~/Scripts/dropzone/dropzone.css"));
         }
     }
 }

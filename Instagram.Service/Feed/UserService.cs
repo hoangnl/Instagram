@@ -28,6 +28,27 @@ namespace Instagram.Service.Feed
             UnitOfWork.Commit();
         }
 
+        public IEnumerable<UserViewModel> Autocomplete(string searchTerm)
+        {
+            IEnumerable<UserViewModel> userViewModels = new List<UserViewModel>();
+            IEnumerable<Model.EDM.User> userList = UnitOfWork.UserRepository.SearchUser(searchTerm).Take(5);
+            if (userList.Count() > 0)
+            {
+                var config = new MapperConfiguration(c =>
+                {
+                    c.CreateMap<Model.EDM.FeedLike, FeedLikeViewModel>();
+                    c.CreateMap<Model.EDM.User, UserViewModel>().AfterMap((s, d) => d.Following = false);
+                    c.CreateMap<Model.EDM.Feed, FeedViewModel>();
+                    c.CreateMap<Model.EDM.FeedComment, FeedCommentViewModel>();
+                    c.CreateMap<Model.EDM.File, FileViewModel>().AfterMap((s, d) => d.PhotoLink = string.Format("~/" + s.FileFolder.Path + "/{0}/{1}", string.Concat(s.CreatedDate.Year.ToString(), s.CreatedDate.Month.ToString()), s.FileName.ToString() + "_O." + s.FileType.Name));
+                    c.CreateMap<Model.EDM.FileType, FileTypeViewModel>();
+                });
+                var mapper = config.CreateMapper();
+                userViewModels = mapper.Map<IEnumerable<UserViewModel>>(userList);
+            }
+            return userViewModels;
+        }
+
         public bool Follow(string userId, string userFollowId)
         {
             var userFollow = new Model.EDM.UserFollow()
@@ -45,7 +66,7 @@ namespace Instagram.Service.Feed
             //IEnumerable<UserViewModel> userViewModels = new List<UserViewModel>();
             var feedLikeViewModel = new List<FeedLikeViewModel>();
             var feedLike = UnitOfWork.FeedLikeRepository.GetWithInclude(p => p.FeedId == feedId, "User");
-            
+
             //var users = feed.Users;
             if (feedLike != null)
             {

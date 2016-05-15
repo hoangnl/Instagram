@@ -266,5 +266,19 @@ namespace Instagram.Controllers
                 return Json(new { Message = "Error in saving file" });
             }
         }
+
+        public ActionResult Autocomplete(string searchTerm)
+        {
+            var users = userService.Autocomplete(searchTerm).Select(
+                s => new
+                {
+                    UserId = s.UserId,
+                    FullName = s.FullName,
+                    Avartar = Url.Content("~/UserPhoto/Avatar/" + s.Avartar),
+                    UserName = s.UserName
+                }
+                );
+            return Json(users, JsonRequestBehavior.AllowGet);
+        }
     }
 }

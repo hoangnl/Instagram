@@ -310,3 +310,10 @@ Instagram/bin/Instagram.ViewModel.dll
 Instagram/bin/Instagram.Service.pdb
 *.pdb
 Instagram/bin/Instagram.Model.pdb
+Instagram/bin/Instagram.Common.dll
+*.dll
+Instagram/bin/Instagram.Common.pdb
+*.dll
+Instagram/bin/Instagram.Model.pdb
+*.dll
+Instagram/bin/Instagram.Service.pdb

@@ -81,7 +81,6 @@ $('*[data-poload]').hover(function () {
     e.off('hover');
     $.get(e.data('poload'), function (d) {
         e.popover({
-
             content: d,
             html: true,
             container: 'body'
@@ -97,16 +96,112 @@ $('body').on('click', function (e) {
     }
 });
 
-$(document).ready($(function () {
-    var states = new Bloodhound({
-        datumTokenizer: Bloodhound.tokenizers.whitespace,
-        queryTokenizer: Bloodhound.tokenizers.whitespace,
-        // `states` is an array of state names defined in "The Basics"
-        local: states
-    });
+Dropzone.options.photo = { // The camelized version of the ID of the form element
 
-    $('.typeahead').typeahead({
-        name: 'name',
-        local: ['yasser', 'shyam', 'sujesh', 'siddhesh', 'vaibhav']
+    // The configuration we've talked about above
+    //paramName: "inputFiles",
+    autoDiscover: false,
+    autoProcessQueue: false,
+    uploadMultiple: true,
+    parallelUploads: 100,
+    maxFiles: 100,
+    dictDefaultMessage: "Bạn có thể kéo ảnh hoặc click để chọn",
+    previewsContainer: "#photo > .modal-body",
+
+    // The setting up of the dropzone
+    init: function () {
+        var myDropzone = this;
+
+        // First change the button to actually tell Dropzone to process the queue.
+        this.element.querySelector("button[type=submit]").addEventListener("click", function (e) {
+            // Make sure that the form isn't actually being sent.
+            e.preventDefault();
+            e.stopPropagation();
+            myDropzone.processQueue();
+        });
+
+        // Listen to the sendingmultiple event. In this case, it's the sendingmultiple event instead
+        // of the sending event because uploadMultiple is set to true.
+        this.on("sendingmultiple", function () {
+            // Gets triggered when the form is actually being sent.
+            // Hide the success button or the complete form.
+        });
+        this.on("successmultiple", function (files, response) {
+            // Gets triggered when the files have successfully been sent.
+            // Redirect user or notify of success.
+        });
+        this.on("errormultiple", function (files, response) {
+            // Gets triggered when there was an error sending the files.
+            // Maybe show form again, and notify user of error
+        });
+    }
+
+}
+
+//var numbers = new Bloodhound({
+//    datumTokenizer: function (d) { return Bloodhound.tokenizers.whitespace(d.num); },
+//    queryTokenizer: Bloodhound.tokenizers.whitespace,
+//    local: [
+//    { num: 'one' },
+//    { num: 'two' },
+//    { num: 'three' },
+//    { num: 'four' },
+//    { num: 'five' },
+//    { num: 'six' },
+//    { num: 'seven' },
+//    { num: 'eight' },
+//    { num: 'nine' },
+//    { num: 'ten' }
+//    ]
+//});
+
+//// initialize the bloodhound suggestion engine
+//numbers.initialize();
+
+//// instantiate the typeahead UI
+//$('#bloodhound .typeahead').typeahead(null, {
+//    displayKey: 'num',
+//    source: numbers.ttAdapter()
+//});
+
+
+
+$(function () {
+    var usernames = new Bloodhound({
+        datumTokenizer: function (datum) {
+            return Bloodhound.tokenizers.whitespace(datum.tokens);
+        },
+        queryTokenizer: Bloodhound.tokenizers.whitespace,
+        limit: 5,
+        remote: {
+            url: "/home/autocomplete/",
+            replace: function (url, query) {
+                return url + "?searchTerm=" + query;
+            },
+            filter: function (usernames) {
+                return $.map(usernames, function (data) {
+                    return {
+                        id: data.UserId,
+                        symbol: data.Avartar,
+                        name: data.FullName,
+                        username: data.UserName
+                    }
+                });
+            }
+        }
     });
-}));
+    usernames.initialize();
+    $('#bloodhound .typeahead').typeahead(null, {
+        name: 'usernames',
+        displayKey: 'name',
+        minLength: 1, // send AJAX request only after user type in at least X characters
+        source: usernames.ttAdapter(),
+        templates: {
+            suggestion: function (data) {
+                return '<p>' + '<img src="' + data.symbol + '" class="img-responsive user-avatar" alt="Avatar" />' + data.name + '</p>';
+            }
+        }
+    }).on('typeahead:selected', function (obj, stock) {
+        window.location.href = "/profile/detail/" + stock.username;
+    });
+});
