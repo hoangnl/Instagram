@@ -6,8 +6,14 @@
 
 <div class="col-sm12 padding-top">
     <div class="row">
-        <div class="col-sm-3"></div>
-        <div class="col-sm-6" id="newFeedsList">
+        <div class="col-sm-offset-3 col-sm-6">
+            <div class="embed-responsive embed-responsive-16by9">
+                @Html.Partial("_Player")
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-offset-3 col-sm-6" id="newFeedsList">
             @Html.Partial("_FeedView", Model)
             <div id="loading">
                 <img src='@Url.Content("~/images/spin.gif")' /><p><b>Đang tải dữ liệu...</b></p>

@@ -30,11 +30,15 @@ namespace Instagram
                       "~/Scripts/dropzone/dropzone.min.js",
                       "~/Scripts/dropzone/dropzone-*"));
 
+            bundles.Add(new ScriptBundle("~/bundles/player").Include(
+                      "~/Scripts/Feed/player.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
-                       "~/Content/typeahead.css",
-                      "~/Scripts/dropzone/dropzone.css"));
+                      "~/Content/typeahead.css",
+                      "~/Scripts/dropzone/dropzone.css",
+                      "~/Content/player.css"));
         }
     }
 }

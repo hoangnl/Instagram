@@ -222,11 +222,19 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\player.css" />
     <Content Include="Content\typeahead.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Images\Avatar\avatar-default.png" />
+    <Content Include="Images\Player\fullscreen.png" />
+    <Content Include="Images\Player\mute.png" />
+    <Content Include="Images\Player\pause.png" />
+    <Content Include="Images\Player\play.png" />
+    <Content Include="Images\Player\replay.png" />
+    <Content Include="Images\Player\sound.png" />
     <Content Include="Images\spin.gif" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
@@ -256,6 +264,7 @@
     <Content Include="Scripts\dropzone\dropzone.js" />
     <Content Include="Scripts\dropzone\dropzone.min.css" />
     <Content Include="Scripts\dropzone\dropzone.min.js" />
+    <Content Include="Scripts\Feed\player.js" />
     <Content Include="Scripts\Feed\upload.js" />
     <Content Include="Scripts\Feed\instagram.js" />
     <Content Include="Scripts\infiniteScroll.js" />
@@ -329,6 +338,7 @@
     <Content Include="Views\Home\_LikedUserList.cshtml" />
     <Content Include="Views\Profile\_PhotoView.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
+    <Content Include="Views\Shared\_Player.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
