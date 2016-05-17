@@ -94,6 +94,13 @@
           <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="FullName" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Avartar" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Bio" Type="nvarchar" MaxLength="500" />
+          <Property Name="PhoneNo" Type="nvarchar" MaxLength="20" />
+          <Property Name="Website" Type="nvarchar" MaxLength="250" />
+          <Property Name="Gender" Type="int" Nullable="false" />
+          <Property Name="Timestamp" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="AccountDisabled" Type="bit" Nullable="false" />
+          <Property Name="FileTypeId" Type="int" />
         </EntityType>
         <EntityType Name="UserFollow">
           <Key>
@@ -233,6 +240,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_User_FileType">
+          <End Role="FileType" Type="Self.FileType" Multiplicity="0..1" />
+          <End Role="User" Type="Self.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileType">
+              <PropertyRef Name="FileTypeId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="FileTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserFollow_User">
           <End Role="User" Type="Self.User" Multiplicity="1" />
           <End Role="UserFollow" Type="Self.UserFollow" Multiplicity="*" />
@@ -308,6 +327,10 @@
             <End Role="FileType" EntitySet="FileType" />
             <End Role="File" EntitySet="File" />
           </AssociationSet>
+          <AssociationSet Name="FK_User_FileType" Association="Self.FK_User_FileType">
+            <End Role="FileType" EntitySet="FileType" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
           <AssociationSet Name="FK_UserFollow_User" Association="Self.FK_UserFollow_User">
             <End Role="User" EntitySet="User" />
             <End Role="UserFollow" EntitySet="UserFollow" />
@@ -380,6 +403,10 @@
             <End Role="UserFollow" EntitySet="UserFollows" />
           </AssociationSet>
           <EntitySet Name="AspNetUsers" EntityType="InstagramModel.AspNetUser" />
+          <AssociationSet Name="FK_User_FileType" Association="InstagramModel.FK_User_FileType">
+            <End Role="FileType" EntitySet="FileTypes" />
+            <End Role="User" EntitySet="Users" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Feed">
           <Key>
@@ -441,6 +468,14 @@
           <NavigationProperty Name="FeedLikes" Relationship="InstagramModel.FK_FeedLike_User" FromRole="User" ToRole="FeedLike" />
           <NavigationProperty Name="UserFollows" Relationship="InstagramModel.FK_UserFollow_User" FromRole="User" ToRole="UserFollow" />
           <NavigationProperty Name="UserFollows1" Relationship="InstagramModel.FK_UserFollow_User1" FromRole="User" ToRole="UserFollow" />
+          <Property Name="Bio" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNo" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Website" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="Int32" Nullable="false" />
+          <Property Name="Timestamp" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="AccountDisabled" Type="Boolean" Nullable="false" />
+          <Property Name="FileTypeId" Type="Int32" />
+          <NavigationProperty Name="FileType" Relationship="InstagramModel.FK_User_FileType" FromRole="User" ToRole="FileType" />
         </EntityType>
         <Association Name="FK_Feed_User">
           <End Type="InstagramModel.User" Role="User" Multiplicity="1">
@@ -567,6 +602,7 @@
           <Property Name="FileTypeId" Type="Int32" Nullable="false" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Files" Relationship="InstagramModel.FK_File_FileType" FromRole="FileType" ToRole="File" />
+          <NavigationProperty Name="Users" Relationship="InstagramModel.FK_User_FileType" FromRole="FileType" ToRole="User" />
         </EntityType>
         <Association Name="FK_File_Feed">
           <End Type="InstagramModel.Feed" Role="Feed" Multiplicity="1" />
@@ -657,6 +693,18 @@
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
           <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
+        <Association Name="FK_User_FileType">
+          <End Type="InstagramModel.FileType" Role="FileType" Multiplicity="0..1" />
+          <End Type="InstagramModel.User" Role="User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FileType">
+              <PropertyRef Name="FileTypeId" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="FileTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -706,6 +754,13 @@
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="InstagramModel.User">
               <MappingFragment StoreEntitySet="User">
+                <ScalarProperty Name="FileTypeId" ColumnName="FileTypeId" />
+                <ScalarProperty Name="AccountDisabled" ColumnName="AccountDisabled" />
+                <ScalarProperty Name="Timestamp" ColumnName="Timestamp" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="PhoneNo" ColumnName="PhoneNo" />
+                <ScalarProperty Name="Bio" ColumnName="Bio" />
                 <ScalarProperty Name="Avartar" ColumnName="Avartar" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
                 <ScalarProperty Name="UserId" ColumnName="UserId" />

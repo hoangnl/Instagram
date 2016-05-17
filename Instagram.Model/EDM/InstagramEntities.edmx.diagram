@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="3632b1a2d11b4c0597bb0430c2702def" Name="Diagram1" ZoomLevel="50" >
+      <Diagram DiagramId="3632b1a2d11b4c0597bb0430c2702def" Name="Diagram1" ZoomLevel="111" >
         <EntityTypeShape EntityType="InstagramModel.Feed" Width="1.5" PointX="3" PointY="3.75" />
         <EntityTypeShape EntityType="InstagramModel.FeedComment" Width="1.5" PointX="5.25" PointY="0.75" />
         <EntityTypeShape EntityType="InstagramModel.FeedCommentLike" Width="1.5" PointX="7.5" PointY="2.5" />
@@ -27,6 +27,7 @@
         <AssociationConnector Association="InstagramModel.FK_UserFollow_User" />
         <AssociationConnector Association="InstagramModel.FK_UserFollow_User1" />
         <EntityTypeShape EntityType="InstagramModel.AspNetUser" Width="1.5" PointX="8.375" PointY="9.75" />
+        <AssociationConnector Association="InstagramModel.FK_User_FileType" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -1,6 +1,56 @@
-﻿
+﻿@using Microsoft.AspNet.Identity
+@model Instagram.ViewModel.User.UserProfileViewModel
 @{
-    Layout = null;
+    ViewBag.Title = "Detail";
 }
 
-@ViewBag.UserName
+<div class="col-sm-12 padding-top profile">
+    <div class="row user-info">
+        <div class="col-md-offset-1 col-sm-3">
+            <div>
+                <img src="@Url.Content(Model.Avartar)" alt="" class="img-circle img-responsive user-avatar" />
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <div>
+                <span class="user-name">@Model.UserName</span>
+                @if (Model.UserId == User.Identity.GetUserId())
+                {
+                    <a class="btn btn-primary" href="/Profile/Edit">Sửa thông tin</a>
+                }
+                else
+                {
+                    <a class="btn btn-primary" href="/Profile/Edit">Theo dõi</a>
+                }
+            </div>
+            <div class="user-description">
+                <strong>@Model.FullName</strong> - <span>@Model.Bio</span>
+                <a href="@Model.Website" target="_blank">@Model.Website</a>
+            </div>
+            <div class="user-statistic">
+                <ul>
+                    <li>
+                        <strong>@Model.PostNo</strong> ảnh
+                    </li>
+                    <li><a href="#"><strong>@Model.FollowerNo</strong> người theo dõi</a></li>
+                    <li><a href="#">Theo dõi @Model.FollowingNo người</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="row user-photo">
+        @{
+            var photos = Model.Feeds.Select((x, i) => new
+            {
+                Index = i,
+                Value = x
+            }).GroupBy(x => x.Index / 3).Select(x => x.Select(v => v.Value).ToList()).ToList();
+        }
+        @foreach (var feeds in photos)
+        {
+            <div class="row">
+                @Html.Partial("_PhotoView", feeds)
+            </div>
+        }
+    </div>
+</div>

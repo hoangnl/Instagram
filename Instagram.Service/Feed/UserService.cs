@@ -4,6 +4,8 @@ using Instagram.Model.Common;
 using Instagram.ViewModel.Feed;
 using AutoMapper;
 using System;
+using Instagram.ViewModel.User;
+using Instagram.Service.Common;
 
 namespace Instagram.Service.Feed
 {
@@ -126,6 +128,39 @@ namespace Instagram.Service.Feed
                 userViewModel = mapper.Map<UserViewModel>(user);
             }
             return userViewModel;
+        }
+
+        public UserProfileViewModel GetUserProfileByUserId(string id, string loginUserId)
+        {
+            var userProfile = new UserProfileViewModel();
+            var user = UnitOfWork.UserRepository.GetWithInclude(e => e.UserId == id, "Feeds", "UserFollows", "UserFollows1").FirstOrDefault();
+            if (user != null)
+            {
+                var config = new MapperConfiguration(c =>
+                {
+                    c.CreateMap<Model.EDM.User, UserProfileViewModel>().AfterMap((s, d) =>
+                    {
+                        d.PostNo = s.Feeds.Count();
+                        d.FollowerNo = s.UserFollows.Count();
+                        d.FollowingNo = s.UserFollows1.Count();
+                        d.UserName = UnitOfWork.AspNetUserRepository.GetBy(e => e.Id == s.UserId).UserName;
+                        d.Avartar = ImageCommon.GetAvatarLink(id, s.FileTypeId, s.FileType);
+                    });
+                    c.CreateMap<Model.EDM.User, UserViewModel>().AfterMap((s, d) =>
+                    {
+                        //d.Following = false;
+                        d.UserName = UnitOfWork.AspNetUserRepository.GetBy(e => e.Id == s.UserId).UserName;
+                    });
+                    c.CreateMap<Model.EDM.Feed, FeedViewModel>();
+                    c.CreateMap<Model.EDM.FeedComment, FeedCommentViewModel>();
+                    c.CreateMap<Model.EDM.FeedLike, FeedLikeViewModel>();
+                    c.CreateMap<Model.EDM.File, FileViewModel>().AfterMap((s, d) => d.PhotoLink = string.Format("~/" + s.FileFolder.Path + "/{0}/{1}", string.Concat(s.CreatedDate.Year.ToString(), s.CreatedDate.Month.ToString()), s.FileName.ToString() + "_O." + s.FileType.Name));
+                    c.CreateMap<Model.EDM.FileType, FileTypeViewModel>();
+                });
+                var mapper = config.CreateMapper();
+                userProfile = mapper.Map<UserProfileViewModel>(user);
+            }
+            return userProfile;
         }
 
         public bool HasNotFollower(string userId)

@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\ImageCommon.cs" />
     <Compile Include="Feed\UserService.cs" />
     <Compile Include="Feed\FeedService.cs" />
     <Compile Include="Feed\IUserService.cs" />

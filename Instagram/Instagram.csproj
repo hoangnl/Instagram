@@ -275,6 +275,7 @@
     <Content Include="Scripts\typeahead.bundle.min.js" />
     <Content Include="Scripts\typeahead.jquery.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="UserPhoto\Avatar\avatar-default.png" />
     <Content Include="UserPhoto\Photo\Photo.jpg" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -326,10 +327,10 @@
     <Content Include="Views\Home\_FollowView.cshtml" />
     <Content Include="Views\Profile\Detail.cshtml" />
     <Content Include="Views\Home\_LikedUserList.cshtml" />
+    <Content Include="Views\Profile\_PhotoView.cshtml" />
+    <Content Include="Views\Profile\Edit.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="UserPhoto\Avatar\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />

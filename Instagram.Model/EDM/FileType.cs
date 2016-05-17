@@ -18,6 +18,7 @@ namespace Instagram.Model.EDM
         public FileType()
         {
             this.Files = new HashSet<File>();
+            this.Users = new HashSet<User>();
         }
     
         public int FileTypeId { get; set; }
@@ -25,5 +26,7 @@ namespace Instagram.Model.EDM
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<File> Files { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<User> Users { get; set; }
     }
 }

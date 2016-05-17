@@ -28,6 +28,13 @@ namespace Instagram.Model.EDM
         public string UserId { get; set; }
         public string FullName { get; set; }
         public string Avartar { get; set; }
+        public string Bio { get; set; }
+        public string PhoneNo { get; set; }
+        public string Website { get; set; }
+        public int Gender { get; set; }
+        public byte[] Timestamp { get; set; }
+        public bool AccountDisabled { get; set; }
+        public Nullable<int> FileTypeId { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Feed> Feeds { get; set; }
@@ -41,5 +48,6 @@ namespace Instagram.Model.EDM
         public virtual ICollection<UserFollow> UserFollows { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserFollow> UserFollows1 { get; set; }
+        public virtual FileType FileType { get; set; }
     }
 }

@@ -56,14 +56,13 @@ namespace Instagram.Models
 
     public class LoginViewModel
     {
-        [Required]
+        //[Required]
         [Display(Name = "Email")]
-        [EmailAddress]
+        //[EmailAddress]
         public string Email { get; set; }
 
         [Required]
         [Display(Name = "UserName")]
-        [EmailAddress]
         public string UserName { get; set; }
 
         [Required]

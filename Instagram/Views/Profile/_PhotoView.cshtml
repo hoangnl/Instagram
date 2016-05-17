@@ -1,0 +1,10 @@
+﻿@model IEnumerable<Instagram.ViewModel.Feed.FeedViewModel>
+@foreach (var feed in Model)
+{
+    <div class="col-sm-4">
+        <a href="#" class="user-photo-link">
+            <img class="user-photo-image" alt=""
+                 src="@Url.Content(feed.Files.FirstOrDefault().PhotoLink)" />
+        </a>
+    </div>
+}

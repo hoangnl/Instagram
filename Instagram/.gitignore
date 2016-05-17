@@ -302,5 +302,8 @@ $RECYCLE.BIN/
 
 # Windows shortcuts
 *.lnk
+*.pdb
+*.pdb
+*.pdb
 *.dll
 *.pdb

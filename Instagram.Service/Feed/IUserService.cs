@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Instagram.Model.EDM;
 using Instagram.ViewModel.Feed;
+using Instagram.ViewModel.User;
 
 namespace Instagram.Service.Feed
 {
@@ -19,5 +20,6 @@ namespace Instagram.Service.Feed
         bool Unfollow(string userId, string userFollowId);
         IEnumerable<FeedLikeViewModel> GetLikedUserList(long feedId);
         IEnumerable<UserViewModel> Autocomplete(string searchTerm);
+        UserProfileViewModel GetUserProfileByUserId(string id, string loginUserId);
     }
 }

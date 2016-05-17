@@ -34,7 +34,7 @@
 }
 
 .padding-top {
-    padding-top: 20px;
+    padding-top: 40px;
 }
 
 .user {
@@ -92,7 +92,8 @@
     }
 
 #postModel > div > div > div.modal-header {
-    background-color: #365899;
+    background-color: #4D7EDD;
+    color: #fff;
 }
 
 /*#photo {
@@ -179,14 +180,24 @@
     .liked.likedList {
         padding-top: 45px;
     }
-/*.dropzone {
+
+#photo .modal-body {
+    padding: 0;
+}
+
+.dropzone {
     background: gray;
-    border: black dashed 3px;
+    border: none !important;
     width: 100%;
-    padding: 50px;
+    padding: 10px;
     text-align: center;
     color: white;
-}*/
+}
+
+    .dropzone .dz-message {
+        margin: 10px 0;
+    }
+
 .caption {
     margin-bottom: 10px;
 }
@@ -211,3 +222,69 @@
     bottom: 18px;
     left: 50%;
 }
+
+.profile {
+}
+
+    .profile .user-info {
+        margin-bottom: 45px;
+    }
+
+        .profile .user-info .user-avatar {
+            width: 152px;
+            height: 152px;
+            border: 2px solid #fff;
+        }
+
+        .profile .user-info .user-name {
+            font-size: 24px;
+            margin-right: 20px;
+        }
+
+    .profile .user-description {
+        font-size: 17px;
+        line-height: 24px;
+        margin-top: 14px;
+    }
+
+
+
+    .profile .user-statistic {
+        font-size: 17px;
+        line-height: 24px;
+        margin-top: 14px;
+    }
+
+        .profile .user-statistic ul {
+            list-style: none;
+            padding: 0;
+        }
+
+            .profile .user-statistic ul > li {
+                display: inline;
+                margin-right: 40px;
+            }
+
+    .profile .user-photo .user-photo-image {
+        height: 300px;
+        width: 300px;
+        padding: 10px 0;
+    }
+
+    .profile .user-photo .col-sm-4 {
+        padding: 5px;
+    }
+
+.profile-edit {
+    padding-top: 20px;
+    background: #fff;
+}
+
+    .profile-edit .edit-form {
+        border-left: 1px solid #365899;
+    }
+
+        .profile-edit .edit-form .edit-title {
+            font-size: 24px;
+            font-weight: bold;
+        }
