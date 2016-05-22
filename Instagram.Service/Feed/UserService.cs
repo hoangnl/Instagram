@@ -6,6 +6,7 @@ using AutoMapper;
 using System;
 using Instagram.ViewModel.User;
 using Instagram.Service.Common;
+using Instagram.Common;
 
 namespace Instagram.Service.Feed
 {
@@ -159,7 +160,10 @@ namespace Instagram.Service.Feed
                         d.PostNo = s.Feeds.Count();
                         d.FollowerNo = s.UserFollows.Count();
                         d.FollowingNo = s.UserFollows1.Count();
-                        d.UserName = UnitOfWork.AspNetUserRepository.GetBy(e => e.Id == s.UserId).UserName;
+                        var aspUser = UnitOfWork.AspNetUserRepository.GetBy(e => e.Id == s.UserId);
+                        d.UserName = aspUser.UserName;
+                        d.Email = aspUser.Email;
+                        d.GenderEnum = (GenderEnum)s.Gender;
                         d.Avartar = ImageCommon.GetAvatarLink(id, s.FileTypeId, s.FileType);
                     });
                     c.CreateMap<Model.EDM.User, UserViewModel>().AfterMap((s, d) =>
@@ -183,6 +187,21 @@ namespace Instagram.Service.Feed
         {
             bool result = UnitOfWork.UserFollowRepository.GetMany(e => e.UserFollowId == userId).Count() == 0;
             return result;
+        }
+
+        public void SaveUserProfile(UserProfileViewModel userProfileViewModel)
+        {
+            var config = new MapperConfiguration(c =>
+            {
+                c.CreateMap<UserProfileViewModel, Model.EDM.User>().AfterMap((s, d) =>
+                {
+                    d.Gender = (int)s.GenderEnum;
+                });
+            });
+            var mapper = config.CreateMapper();
+            var user = mapper.Map<Model.EDM.User>(userProfileViewModel);
+            UnitOfWork.UserRepository.Update(user);
+            UnitOfWork.Commit();
         }
 
         public IEnumerable<UserViewModel> SearchUser(string searchTerm)

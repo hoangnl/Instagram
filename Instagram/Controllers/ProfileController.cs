@@ -1,5 +1,6 @@
 ﻿using Instagram.Helpers;
 using Instagram.Service.Feed;
+using Instagram.ViewModel.User;
 using Microsoft.AspNet.Identity.Owin;
 using System;
 using System.Collections.Generic;
@@ -50,6 +51,17 @@ namespace Instagram.Controllers
             string userId = UserHelper.GetCurrentUserIdFromClaim(User);
             var userProfile = UserService.GetUserProfileByUserId(userId, userId);
             return View(userProfile);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(UserProfileViewModel userProfileViewModel)
+        {
+            if (ModelState.IsValid)
+            {
+                UserService.SaveUserProfile(userProfileViewModel);
+            }
+            return RedirectToAction("Edit");
         }
     }
 }

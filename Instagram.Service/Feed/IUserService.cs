@@ -21,5 +21,6 @@ namespace Instagram.Service.Feed
         IEnumerable<FeedLikeViewModel> GetLikedUserList(long feedId);
         IEnumerable<UserViewModel> Autocomplete(string searchTerm);
         UserProfileViewModel GetUserProfileByUserId(string id, string loginUserId);
+        void SaveUserProfile(UserProfileViewModel userProfileViewModel);
     }
 }
