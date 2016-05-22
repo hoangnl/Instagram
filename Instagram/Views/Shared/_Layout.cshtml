@@ -17,7 +17,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Moments.vn", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Instagram", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -136,6 +136,7 @@
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/dropzone")
     @Scripts.Render("~/bundles/player")
+    @Scripts.Render("~/bundles/autocomplete")
     @RenderSection("scripts", required: false)
     <script>
         // Only enable if the document has a long scroll bar
