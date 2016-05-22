@@ -33,16 +33,16 @@ namespace Instagram.Controllers
             //var userId = "f4e550cf-1c85-4908-bdd8-b64eb58d0b06";
             var userId = userHelper.GetCurrentUserIdFromClaim(User);
             bool hasNotFollower = userService.HasNotFollower(userId);
-            if (hasNotFollower)
-            {
-                return RedirectToAction("Suggestion");
-            }
-            else
-            {
-                int pageSize = 5;
-                var newsFeed = feedService.GetFeedsPaging(userId, 0, pageSize);
-                return View(newsFeed);
-            }
+            //if (hasNotFollower)
+            //{
+            //    return RedirectToAction("Suggestion");
+            //}
+            //else
+            //{
+            int pageSize = 5;
+            var newsFeed = feedService.GetFeedsPaging(userId, 0, pageSize);
+            return View(newsFeed);
+            //}
         }
 
         public ActionResult Suggestion()
