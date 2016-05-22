@@ -264,6 +264,7 @@
     <Content Include="Scripts\dropzone\dropzone.js" />
     <Content Include="Scripts\dropzone\dropzone.min.css" />
     <Content Include="Scripts\dropzone\dropzone.min.js" />
+    <Content Include="Scripts\Feed\autocomplete.js" />
     <Content Include="Scripts\Feed\player.js" />
     <Content Include="Scripts\Feed\upload.js" />
     <Content Include="Scripts\Feed\instagram.js" />
