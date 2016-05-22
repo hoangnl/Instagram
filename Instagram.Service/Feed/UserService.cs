@@ -189,19 +189,36 @@ namespace Instagram.Service.Feed
             return result;
         }
 
-        public void SaveUserProfile(UserProfileViewModel userProfileViewModel)
+        public void SaveAvatar(UserViewModel userViewModel)
         {
-            var config = new MapperConfiguration(c =>
+
+            var user = UnitOfWork.UserRepository.GetById(userViewModel.UserId);
+            if (user != null)
             {
-                c.CreateMap<UserProfileViewModel, Model.EDM.User>().AfterMap((s, d) =>
+                user.FileTypeId = userViewModel.FileTypeId;
+                user.Avartar = userViewModel.Avartar;
+                UnitOfWork.UserRepository.Update(user);
+                UnitOfWork.Commit();
+            }
+        }
+
+        public UserProfileViewModel SaveUserProfile(UserProfileViewModel userProfileViewModel)
+        {
+            var user = UnitOfWork.UserRepository.GetById(userProfileViewModel.UserId);
+            if (user != null)
+            {
+                user.FullName = userProfileViewModel.FullName;
+                user.Bio = userProfileViewModel.Bio;
+                user.Website = userProfileViewModel.Website;
+                user.PhoneNo = userProfileViewModel.PhoneNo;
+                user.Gender = (int)userProfileViewModel.GenderEnum;
+                UnitOfWork.UserRepository.Update(user);
+                if (UnitOfWork.Commit())
                 {
-                    d.Gender = (int)s.GenderEnum;
-                });
-            });
-            var mapper = config.CreateMapper();
-            var user = mapper.Map<Model.EDM.User>(userProfileViewModel);
-            UnitOfWork.UserRepository.Update(user);
-            UnitOfWork.Commit();
+                    userProfileViewModel = GetUserProfileByUserId(userProfileViewModel.UserId, userProfileViewModel.UserId);
+                }
+            }
+            return userProfileViewModel;
         }
 
         public IEnumerable<UserViewModel> SearchUser(string searchTerm)

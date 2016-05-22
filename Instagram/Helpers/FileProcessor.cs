@@ -87,6 +87,54 @@ namespace Instagram.Helpers
             return uploadFileViewModels;
         }
 
+        public UserViewModel ProcessAvatar(HttpPostedFileBase photo, string userId)
+        {
+            var user = new UserViewModel();
+            saveToFolder = "../files/Avatar/";
+            var physicalPath = HttpContext.Current.Server.MapPath(saveToFolder);
+            if (!Directory.Exists(physicalPath))
+            {
+                Directory.CreateDirectory(physicalPath);
+            }
+            if (photo != null && photo.ContentLength > 0 && photo.ContentLength / 1000 < 5000)
+            {
+                var uploadFileName = photo.FileName.Substring(photo.FileName.IndexOf("\\") + 1);
+                var extension = uploadFileName.Substring(uploadFileName.LastIndexOf(".") + 1);
+                string fullFileName = physicalPath + "/" + userId + "_O." + extension;
+                bool goodFile = true;
+                user.UserId = userId;
+                switch (extension.ToLower())
+                {
+                    case "jpg":
+                        user.FileTypeId = (int)FileExtension.JPG;
+                        break;
+                    case "gif":
+                        user.FileTypeId = (int)FileExtension.GIF;
+                        break;
+                    case "jpeg":
+                        user.FileTypeId = (int)FileExtension.JPEG;
+                        break;
+                    case "png":
+                        user.FileTypeId = (int)FileExtension.PNG;
+                        break;
+                    case "mp4":
+                        user.FileTypeId = (int)FileExtension.MP4;
+                        break;
+                    default:
+                        goodFile = false;
+                        break;
+                }
+                if (goodFile)
+                {
+                    if (File.Exists(fullFileName))
+                    {
+                        File.Delete(fullFileName);
+                    }
+                    photo.SaveAs(fullFileName);
+                }
+            }
+            return user;
 
+        }
     }
 }

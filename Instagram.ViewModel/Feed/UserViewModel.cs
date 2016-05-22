@@ -13,7 +13,7 @@ namespace Instagram.ViewModel.Feed
         public string Avartar { get; set; }
         public bool Following { get; set; }
         public string UserName { get; set; }
-
+        public Nullable<int> FileTypeId { get; set; }
         public virtual ICollection<FeedViewModel> Feeds { get; set; }
     }
 }

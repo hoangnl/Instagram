@@ -19,7 +19,7 @@ namespace Instagram.Service.Common
             }
             else
             {
-                avatarLink = String.Format("~/Images/Avatar/{0}", userId + "_O." + fileType.Name);
+                avatarLink = String.Format("~/files/Avatar/{0}", userId + "_O." + fileType.Name);
             }
             return avatarLink;
 

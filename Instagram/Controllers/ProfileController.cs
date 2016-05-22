@@ -1,5 +1,6 @@
 ﻿using Instagram.Helpers;
 using Instagram.Service.Feed;
+using Instagram.ViewModel.Feed;
 using Instagram.ViewModel.User;
 using Microsoft.AspNet.Identity.Owin;
 using System;
@@ -16,10 +17,12 @@ namespace Instagram.Controllers
         private ApplicationUserManager _userManager;
         private readonly IUserHelper UserHelper;
         private readonly IUserService UserService;
+        private IFileProcessor fileProcessor;
         public ProfileController()
         {
             UserHelper = new UserHelper();
             UserService = new UserService();
+            fileProcessor = new FileProcessor();
         }
         public ApplicationUserManager UserManager
         {
@@ -57,9 +60,28 @@ namespace Instagram.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(UserProfileViewModel userProfileViewModel)
         {
+            UserProfileViewModel userProfile;
             if (ModelState.IsValid)
             {
-                UserService.SaveUserProfile(userProfileViewModel);
+                userProfile = UserService.SaveUserProfile(userProfileViewModel);
+                if (userProfile != null)
+                {
+                    ViewBag.SaveSuccess = "Lưu hồ sơ thành công";
+                }
+                return View(userProfile);
+
+            }
+            return View(userProfileViewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult SaveAvatar(HttpPostedFileBase photo)
+        {
+            UserViewModel user = fileProcessor.ProcessAvatar(photo, UserHelper.GetCurrentUserIdFromClaim(User));
+            if (user != null)
+            {
+                UserService.SaveAvatar(user);
             }
             return RedirectToAction("Edit");
         }
