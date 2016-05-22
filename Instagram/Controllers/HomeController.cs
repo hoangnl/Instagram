@@ -33,6 +33,9 @@ namespace Instagram.Controllers
             //var userId = "f4e550cf-1c85-4908-bdd8-b64eb58d0b06";
             var userId = userHelper.GetCurrentUserIdFromClaim(User);
             bool hasNotFollower = userService.HasNotFollower(userId);
+            var userProfile = userService.GetUserProfileByUserId(userId, userId);
+            ViewBag.UserName = userProfile.UserName;
+            ViewBag.Avartar = userProfile.Avartar;
             //if (hasNotFollower)
             //{
             //    return RedirectToAction("Suggestion");
@@ -69,6 +72,9 @@ namespace Instagram.Controllers
             var newsFeed = feedService.GetFeedsPaging(userId, pageIndex, pageSize);
             if (Request.IsAjaxRequest())
             {
+                var userProfile = userService.GetUserProfileByUserId(userId, userId);
+                ViewBag.UserName = userProfile.UserName;
+                ViewBag.Avartar = userProfile.Avartar;
                 return PartialView("_FeedView", newsFeed);
             }
             return View("Index", newsFeed);

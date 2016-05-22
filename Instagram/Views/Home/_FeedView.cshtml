@@ -81,8 +81,8 @@
                         </div>
                     </div>
                     <div class="user">
-                        <a href="/Profile/Detail/@feed.User.UserName">
-                            <img src="@Url.Content("~/UserPhoto/Avatar/" + feed.User.Avartar)" class="img-responsive user-avatar" alt="Avatar" />
+                        <a href="/Profile/Detail/@ViewBag.UserName">
+                            <img src="@Url.Content(ViewBag.Avartar)" class="img-responsive user-avatar" alt="Avatar" />
                         </a>
                         <div class="user-detail">
                             @using (Ajax.BeginForm("Comment", new { feedId = feed.FeedId }, new AjaxOptions()

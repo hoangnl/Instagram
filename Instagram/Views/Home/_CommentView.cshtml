@@ -3,7 +3,7 @@
 <div class="user" id="commentBox@(Model.FeedCommentId)">
     <button type="button" class="close" data-toggle="modal" data-id="@Model.FeedCommentId" data-target="#confirmDialog"><span aria-hidden="true" aria-label="Close">&times;</span></button>
     <a href="/Profile/Detail/@Model.User.UserName">
-        <img class="img-responsive user-avatar" alt="Avatar" src="@Url.Content("~/UserPhoto/Avatar/" + Model.User.Avartar)" />
+        <img class="img-responsive user-avatar" alt="Avatar" src="@Url.Content(Model.User.Avartar)" />
     </a>
     <div class="user-detail">
         <h7>
