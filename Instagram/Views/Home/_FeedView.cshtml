@@ -8,7 +8,7 @@
         <div class="panel-heading">
             <div class="user">
                 <a href="/Profile/Detail/@feed.User.UserName" title="@feed.User.FullName" data-poload="@Url.Action("GetUserInfo", "Home", new { userId = feed.User.UserId })">
-                    <img src="@Url.Content("~/UserPhoto/Avatar/" + feed.User.Avartar)" class="img-responsive user-avatar" alt="Avatar" />
+                    <img src="@Url.Content(feed.User.Avartar)" class="img-responsive user-avatar" alt="Avatar" />
                 </a>
                 <div class="user-detail">
                     <h7><a href="/Profile/Detail/@feed.User.UserName" title="@feed.User.FullName">@feed.User.FullName</a></h7>

@@ -7,6 +7,7 @@ using Instagram.Model.EDM;
 using Instagram.Model.Common;
 using Instagram.ViewModel.Feed;
 using AutoMapper;
+using Instagram.Service.Common;
 
 namespace Instagram.Service.Feed
 {
@@ -28,7 +29,10 @@ namespace Instagram.Service.Feed
                 var config = new MapperConfiguration(c =>
                 {
                     c.CreateMap<Model.EDM.Feed, FeedViewModel>();
-                    c.CreateMap<Model.EDM.User, UserViewModel>();
+                    c.CreateMap<Model.EDM.User, UserViewModel>().AfterMap((s, d) =>
+                    {
+                        d.Avartar = ImageCommon.GetAvatarLink(s.UserId, s.FileTypeId, s.FileType);
+                    });
                     c.CreateMap<Model.EDM.FeedComment, FeedCommentViewModel>();
                     c.CreateMap<Model.EDM.FeedLike, FeedLikeViewModel>();
                     c.CreateMap<Model.EDM.FeedCommentLike, FeedCommentLikeViewModel>();
@@ -52,7 +56,11 @@ namespace Instagram.Service.Feed
                 var config = new MapperConfiguration(c =>
                 {
                     c.CreateMap<Model.EDM.Feed, FeedViewModel>().AfterMap((s, d) => d.FeedLikeSummary = new FeedLikeSummary() { FeedId = s.FeedId, Liked = s.FeedLikes.Any(e => e.UserId == userId), TotalLike = s.FeedLikes.Count() });
-                    c.CreateMap<Model.EDM.User, UserViewModel>().AfterMap((s, d) => d.UserName = UnitOfWork.AspNetUserRepository.GetBy(e => e.Id == s.UserId).UserName);
+                    c.CreateMap<Model.EDM.User, UserViewModel>().AfterMap((s, d) =>
+                    {
+                        d.UserName = UnitOfWork.AspNetUserRepository.GetBy(e => e.Id == s.UserId).UserName;
+                        d.Avartar = ImageCommon.GetAvatarLink(s.UserId, s.FileTypeId, s.FileType);
+                    });
                     c.CreateMap<Model.EDM.FeedComment, FeedCommentViewModel>();
                     c.CreateMap<Model.EDM.FeedLike, FeedLikeViewModel>();
                     c.CreateMap<Model.EDM.FeedCommentLike, FeedCommentLikeViewModel>();

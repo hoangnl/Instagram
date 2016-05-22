@@ -274,7 +274,7 @@ namespace Instagram.Controllers
                 {
                     UserId = s.UserId,
                     FullName = s.FullName,
-                    Avartar = Url.Content("~/UserPhoto/Avatar/" + s.Avartar),
+                    Avartar = Url.Content(s.Avartar),
                     UserName = s.UserName
                 }
                 );
