@@ -307,4 +307,4 @@ $RECYCLE.BIN/
 *.pdb
 *.pdb
 .vs/Instagram/v14/.suo
-Instagram/files/photos/**
+Instagram/files/**
