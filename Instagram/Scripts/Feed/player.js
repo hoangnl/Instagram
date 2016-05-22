@@ -58,11 +58,28 @@ function PlayVideo(id) {
         soundButton.addEventListener('click', muteOrUnmute, false);
         sbarContainer.addEventListener('click', changeVolume, false);
         fullscreenButton.addEventListener('click', fullscreen, false);
-        screenButton.addEventListener('click', playOrPause, false);
+        //screenButton.addEventListener('click', playOrPause, false);
 
     }, false);
 };
 
+function playOrPause() {
+    if (video.paused) {
+        video.play();
+        playButton.src = '/Images/Player/pause.png';
+        update = setInterval(updatePlayer, 30);
+
+        pauseScreen.style.display = 'none';
+        screenButton.src = '/Images/Player/play.png';
+    } else {
+        video.pause();
+        playButton.src = '/Images/Player/play.png';
+        window.clearInterval(update);
+
+        pauseScreen.style.display = 'block';
+        screenButton.src = '/Images/Player/play.png';
+    }
+}
 
 function updatePlayer() {
     var percentage = (video.currentTime / video.duration) * 100;
