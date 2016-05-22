@@ -235,6 +235,7 @@
     <Content Include="Images\Player\play.png" />
     <Content Include="Images\Player\replay.png" />
     <Content Include="Images\Player\sound.png" />
+    <Content Include="Images\Player\thumbnail.png" />
     <Content Include="Images\spin.gif" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />

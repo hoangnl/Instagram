@@ -22,7 +22,8 @@ bld/
 [Bb]in/
 [Oo]bj/
 [Ll]og/
-[Bb]in/*
+[Bb]in/**
+files/photos/**
 # Visual Studio 2015 cache/options directory
 .vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot
@@ -306,3 +307,4 @@ $RECYCLE.BIN/
 *.pdb
 *.pdb
 .vs/Instagram/v14/.suo
+Instagram/files/photos/**
