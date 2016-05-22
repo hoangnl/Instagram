@@ -1,25 +1,27 @@
-﻿<div id="player">
-    <div id="video-container">
-        <div id="screen">
-            <img id="screen-button" src="~/Images/Player/play.png">
+﻿@using Instagram.ViewModel.Feed;
+@model FeedViewModel
+<div id="player@(Model.FeedId)" class="player">
+    <div id="video-container@(Model.FeedId)"  class="video-container">
+        <div id="screen@(Model.FeedId)" class="screen">
+            <img id="screen-button@(Model.FeedId)" src="~/Images/Player/play.png">
         </div>
-        <video id="video" poster="~/Images/Player/thumbnail.png">
-            <source src="sample.mp4">
+        <video id="video@(Model.FeedId)" poster="~/Images/Player/thumbnail.png">
+            <source src="@Url.Content(Model.Files.FirstOrDefault().PhotoLink)">
             It seems your browser doesn't support the HTML5 video tag. Please update it!
         </video>
     </div>
-    <div id="pbar-container">
-        <div id="pbar"></div>
+    <div id="pbar-container@(Model.FeedId)" class="pbar-container">
+        <div id="pbar@(Model.FeedId)" class="pbar"></div>
     </div>
-    <div id="buttons-container">
-        <img id="play-button" src="~/Images/Player/play.png">
-        <div id="time-field">
+    <div id="buttons-container@(Model.FeedId)" class="buttons-container">
+        <img id="play-button@(Model.FeedId)" src="~/Images/Player/play.png" class="play-button">
+        <div id="time-field@(Model.FeedId)" class="time-field">
             0:00 / 0:00
         </div>
-        <img id="sound-button" src="~/Images/Player/sound.png">
-        <div id="sbar-container">
-            <div id="sbar"></div>
+        <img id="sound-button@(Model.FeedId)" src="~/Images/Player/sound.png" class="sound-button">
+        <div id="sbar-container@(Model.FeedId)" class="sbar-container">
+            <div id="sbar@(Model.FeedId)" class="sbar"></div>
         </div>
-        <img id="fullscreen-button" src="~/Images/Player/fullscreen.png">
+        <img id="fullscreen-button@(Model.FeedId)" src="~/Images/Player/fullscreen.png" class="fullscreen-button">
     </div>
 </div>

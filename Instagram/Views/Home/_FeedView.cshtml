@@ -1,4 +1,5 @@
 ﻿@using Instagram.ViewModel.Feed;
+@using Instagram.Common;
 @model IEnumerable<FeedViewModel>
 
 @foreach (var feed in Model)
@@ -6,10 +7,6 @@
     <div class="panel panel-default">
         <div class="panel-heading">
             <div class="user">
-                @*<a href="@Url.Action("GetUserInfo", "Home", new { userId = feed.User.UserId })" class ="modal-link">
-
-                        <img src="@Url.Content("~/UserPhoto/Avatar/" + feed.User.Avartar)" class="img-responsive" alt="Avatar" />
-                    </a>*@
                 <a href="/Profile/Detail/@feed.User.UserName" title="@feed.User.FullName" data-poload="@Url.Action("GetUserInfo", "Home", new { userId = feed.User.UserId })">
                     <img src="@Url.Content("~/UserPhoto/Avatar/" + feed.User.Avartar)" class="img-responsive user-avatar" alt="Avatar" />
                 </a>
@@ -26,7 +23,14 @@
                 <div class="photo">
                     @if (feed.Files.Count() == 1)
                     {
-                        <img src="@Url.Content(feed.Files.FirstOrDefault().PhotoLink)" class="img-responsive" alt="Photo" />
+                        if (feed.Files.FirstOrDefault().FileTypeId == (int)FileExtension.MP4)
+                        {
+                            @Html.Partial("_Player", feed)
+                        }
+                        else
+                        {
+                            <img src="@Url.Content(feed.Files.FirstOrDefault().PhotoLink)" class="img-responsive" alt="Photo" />
+                        }
                     }
 
                     else
