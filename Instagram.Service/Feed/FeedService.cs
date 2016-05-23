@@ -147,7 +147,11 @@ namespace Instagram.Service.Feed
                 var config = new MapperConfiguration(c =>
                 {
                     c.CreateMap<FeedComment, FeedCommentViewModel>();
-                    c.CreateMap<User, UserViewModel>().AfterMap((s, d) => d.UserName = UnitOfWork.AspNetUserRepository.GetBy(e => e.Id == s.UserId).UserName); ;
+                    c.CreateMap<User, UserViewModel>().AfterMap((s, d) =>
+                    {
+                        d.UserName = UnitOfWork.AspNetUserRepository.GetBy(e => e.Id == s.UserId).UserName;
+                        d.Avartar = ImageCommon.GetAvatarLink(s.UserId, s.FileTypeId, s.FileType);
+                    });
                     c.CreateMap<Model.EDM.Feed, FeedViewModel>();
                     c.CreateMap<Model.EDM.FeedCommentLike, FeedCommentLikeViewModel>();
                     c.CreateMap<Model.EDM.FeedLike, FeedLikeViewModel>();

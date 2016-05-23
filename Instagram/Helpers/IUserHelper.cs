@@ -1,4 +1,5 @@
 ﻿using Instagram.ViewModel.Feed;
+using Instagram.ViewModel.User;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,8 @@ namespace Instagram.Helpers
 {
     public interface IUserHelper
     {
-        string  GetCurrentUserIdFromClaim(IPrincipal user);
+        string GetCurrentUserIdFromClaim(IPrincipal user);
+
+        UserProfileViewModel GetCurrentProfileUser(string userId1, string userId2);
     }
 }
