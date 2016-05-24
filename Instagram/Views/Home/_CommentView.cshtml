@@ -1,4 +1,5 @@
 ﻿@using Instagram.ViewModel.Feed;
+@using Instagram.Helpers;
 @model FeedCommentViewModel
 <div class="user" id="commentBox@(Model.FeedCommentId)">
     <button type="button" class="close" data-toggle="modal" data-id="@Model.FeedCommentId" data-target="#confirmDialog"><span aria-hidden="true" aria-label="Close">&times;</span></button>
@@ -16,7 +17,12 @@
             </div>*@
 
         <div>
-            <a href="">@Model.FeedCommentLikes.Count() thích</a> - @Model.CreatedTime
+            <a href="">@Model.FeedCommentLikes.Count() thích</a>
+            <span class="local-datetime"
+                  title="@(Model.CreatedTime.ToString("yyyy-MM-dd HH:mm")) UTC"
+                  data-utc="@(Model.CreatedTime.GetTicks())">
+                @(Model.CreatedTime.ToString("yyyy-MM-dd HH:mm")) UTC
+            </span>
         </div>
     </div>
 </div>

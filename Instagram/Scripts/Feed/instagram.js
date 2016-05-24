@@ -150,9 +150,16 @@ function FormatDate() {
         if (!utcDate) {
             return;
         }
-
         var local = moment.utc(utcDate).local();
-        var formattedDate = local.locale('vi').fromNow();
+        var formattedDate = "";
+        var days = moment().diff(local, 'days');
+        console.log(days);
+        if (days > 1) {
+            formattedDate = local.locale('en').format('DD/MM/YYYY HH:mm');
+        }
+        else {
+            formattedDate = local.locale('vi').fromNow();
+        }
         $this.text(formattedDate);
     });
 }
