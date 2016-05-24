@@ -138,3 +138,23 @@ Dropzone.options.photo = { // The camelized version of the ID of the form elemen
 
 }
 
+
+$(function () {
+    FormatDate();
+});
+
+function FormatDate() {
+    $('.local-datetime').each(function () {
+        var $this = $(this), utcDate = parseInt($this.attr('data-utc'), 10) || 0;
+
+        if (!utcDate) {
+            return;
+        }
+
+        var local = moment.utc(utcDate).local();
+        var formattedDate = local.locale('vi').fromNow();
+        $this.text(formattedDate);
+    });
+}
+
+

@@ -37,6 +37,10 @@ namespace Instagram
             bundles.Add(new ScriptBundle("~/bundles/player").Include(
                       "~/Scripts/Feed/player.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/moment").Include(
+                      "~/Scripts/moment.min.js",
+                      "~/Scripts/moment-with-locales.min.js"));
+
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",

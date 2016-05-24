@@ -1,4 +1,5 @@
 ﻿@using Instagram.ViewModel.Feed;
+@using Instagram.Helpers;
 @using Instagram.Common;
 @model IEnumerable<FeedViewModel>
 
@@ -12,7 +13,13 @@
                 </a>
                 <div class="user-detail">
                     <h7><a href="/Profile/Detail/@feed.User.UserName" title="@feed.User.FullName">@feed.User.FullName</a></h7>
-                    <div>@feed.CreatedTime</div>
+                    <div>
+                        <span class="local-datetime"
+                              title="@(feed.CreatedTime.ToString("yyyy-MM-dd HH:mm")) UTC"
+                              data-utc="@(feed.CreatedTime.GetTicks())">
+                            @(feed.CreatedTime.ToString("yyyy-MM-dd HH:mm")) UTC
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
