@@ -24,6 +24,13 @@ namespace Instagram.Controllers
             UserService = new UserService();
             fileProcessor = new FileProcessor();
         }
+
+        public ProfileController(IUserHelper userHelper, IUserService userService, IFileProcessor FileProcessor)
+        {
+            UserHelper = userHelper;
+            UserService = userService;
+            fileProcessor = FileProcessor;
+        }
         public ApplicationUserManager UserManager
         {
             get
