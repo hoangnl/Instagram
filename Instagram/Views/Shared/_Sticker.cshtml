@@ -1,0 +1,35 @@
+﻿@using Instagram.ViewModel.Feed;
+@model IEnumerable<StickerViewModel>
+<div class="sticker-list">
+    <ul class="nav nav-tabs">
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            <li class="@(i== 0 ? "active" : string.Empty)"><a data-toggle="tab" href="#@(Model.ElementAt(i).Folder)">@Model.ElementAt(i).Folder</a></li>
+        }
+    </ul>
+    <div class="tab-content">
+        @for (int i = 0; i < Model.Count(); i++)
+        {
+            <div id="@(Model.ElementAt(i).Folder)" class="tab-pane fade @(i== 0 ? "in active" : string.Empty)">
+                @{
+                    var photoGroups = Model.ElementAt(i).Path.Select((x, j) => new
+                    {
+                        Index = j,
+                        Value = x
+                    }).GroupBy(x => x.Index / 4).Select(x => x.Select(v => v.Value).ToList()).ToList();
+                }
+                @foreach (var photos in photoGroups)
+                {
+                    <div class="row">
+                        @foreach (var photo in photos)
+                        {
+                            <div class="col-sm-3">
+                                <img src="@Url.Content(photo)" class="img-responsive sticker" alt="Avatar" />
+                            </div>
+                        }
+                    </div>
+                }
+            </div>
+                    }
+    </div>
+</div>

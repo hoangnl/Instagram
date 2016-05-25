@@ -5,8 +5,6 @@ using System.Collections.Generic;
 using System.Web;
 using Instagram.Helpers;
 using System.Linq;
-using System.Security.Claims;
-using Microsoft.AspNet.Identity;
 using System.IO;
 
 namespace Instagram.Controllers
@@ -30,22 +28,14 @@ namespace Instagram.Controllers
 
         public ActionResult Index()
         {
-            //var userId = "f4e550cf-1c85-4908-bdd8-b64eb58d0b06";
             var userId = userHelper.GetCurrentUserIdFromClaim(User);
             bool hasNotFollower = userService.HasNotFollower(userId);
             var userProfile = userHelper.GetCurrentProfileUser(userId, userId);
             ViewBag.UserName = userProfile.UserName;
             ViewBag.Avartar = userProfile.Avartar;
-            //if (hasNotFollower)
-            //{
-            //    return RedirectToAction("Suggestion");
-            //}
-            //else
-            //{
             int pageSize = 5;
             var newsFeed = feedService.GetFeedsPaging(userId, 0, pageSize);
             return View(newsFeed);
-            //}
         }
 
         public ActionResult Suggestion()
@@ -65,9 +55,7 @@ namespace Instagram.Controllers
 
         public ActionResult GetFeedPaging(int pageIndex = 0)
         {
-            //var userId = "f4e550cf-1c85-4908-bdd8-b64eb58d0b06";
             var userId = userHelper.GetCurrentUserIdFromClaim(User);
-
             int pageSize = 5;
             var newsFeed = feedService.GetFeedsPaging(userId, pageIndex, pageSize);
             if (Request.IsAjaxRequest())
@@ -109,12 +97,10 @@ namespace Instagram.Controllers
             return RedirectToAction("Index");
         }
 
-
-
         [HttpPost]
         public ActionResult Like(long feedId)
         {
-            //var userId = "f4e550cf-1c85-4908-bdd8-b64eb58d0b06";
+            
             var userId = userHelper.GetCurrentUserIdFromClaim(User);
             bool likeResult = feedService.LikeFeed(userId, feedId);
             var feedLikeSummary = new FeedLikeSummary()
@@ -129,7 +115,7 @@ namespace Instagram.Controllers
         [HttpPost]
         public ActionResult Unlike(long feedId)
         {
-            //var userId = "f4e550cf-1c85-4908-bdd8-b64eb58d0b06";
+            
             var userId = userHelper.GetCurrentUserIdFromClaim(User);
             bool likeResult = feedService.UnlikeFeed(userId, feedId);
             var feedLikeSummary = new FeedLikeSummary()
@@ -143,8 +129,7 @@ namespace Instagram.Controllers
 
         [HttpPost]
         public ActionResult Comment(long feedId, string content)
-        {
-            //var userId = "f4e550cf-1c85-4908-bdd8-b64eb58d0b06";
+        {            
             var userId = userHelper.GetCurrentUserIdFromClaim(User);
             var feedCommentViewModel = feedService.Comment(feedId, userId, content);
             return PartialView("_CommentView", feedCommentViewModel);
@@ -160,7 +145,7 @@ namespace Instagram.Controllers
         [HttpPost]
         public ActionResult LikeComment(long feedCommentId)
         {
-            //var userId = "f4e550cf-1c85-4908-bdd8-b64eb58d0b06";
+            
             var userId = userHelper.GetCurrentUserIdFromClaim(User);
             bool likeResult = feedService.LikeFeed(userId, feedCommentId);
             var feedLikeSummary = new FeedLikeSummary()
@@ -175,7 +160,7 @@ namespace Instagram.Controllers
         [HttpPost]
         public ActionResult UnlikeComment(long feedCommentId)
         {
-            //var userId = "f4e550cf-1c85-4908-bdd8-b64eb58d0b06";
+            
             var userId = userHelper.GetCurrentUserIdFromClaim(User);
             bool likeResult = feedService.LikeFeed(userId, feedCommentId);
             var feedLikeSummary = new FeedLikeSummary()
@@ -219,7 +204,6 @@ namespace Instagram.Controllers
         {
             var userFollowId = userHelper.GetCurrentUserIdFromClaim(User);
             bool followResult = userService.Follow(userId, userFollowId);
-
             return PartialView("_FollowView", new UserViewModel() { UserId = userId, Following = true });
 
         }
@@ -285,6 +269,22 @@ namespace Instagram.Controllers
                 }
                 );
             return Json(users, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult GetStickersList()
+        {
+            var stickerList = new List<StickerViewModel>();
+            var stickerFolderList = fileProcessor.GetStickerFolderList();
+            foreach (var stickerFolder in stickerFolderList)
+            {
+                var path = Path.GetFileName(stickerFolder);
+                stickerList.Add(new StickerViewModel()
+                {
+                    Folder = path,
+                    Path = fileProcessor.GetStickerFileList(path)
+                });
+            }
+            return PartialView("_Sticker", stickerList);
         }
     }
 }

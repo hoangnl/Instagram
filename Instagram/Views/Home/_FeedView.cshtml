@@ -100,7 +100,20 @@
                                 OnSuccess = "clearInput('commentInput" + @feed.FeedId + "')"
                             }))
                             {
-                                <input type="text" name="content" id="commentInput@(feed.FeedId)" class="form-control" placeholder="Bình luận..." rows="1" />
+                                <div class="input-group form-group has-feedback">
+                                    <input type="text" name="content" id="commentInput@(feed.FeedId)" class="form-control" placeholder="Bình luận..." rows="1" />
+
+                                    <div class="input-group-btn">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="glyphicon glyphicon-piggy-bank form-control-feedback"></i><span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu dropdown-menu-right">
+                                            <li>
+                                                @Html.Action("GetStickersList")
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             }
                         </div>
                     </div>

@@ -53,6 +53,7 @@
     <Compile Include="Feed\FeedViewModel.cs" />
     <Compile Include="Feed\FileFolderViewModel.cs" />
     <Compile Include="Feed\FileTypeViewModel.cs" />
+    <Compile Include="Feed\StickerViewModel.cs" />
     <Compile Include="Feed\FileViewModel.cs" />
     <Compile Include="Feed\UserFollowViewModel.cs" />
     <Compile Include="User\UserProfileViewModel.cs" />

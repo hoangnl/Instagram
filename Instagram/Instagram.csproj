@@ -238,6 +238,10 @@
     <Content Include="Images\Player\sound.png" />
     <Content Include="Images\Player\thumbnail.png" />
     <Content Include="Images\spin.gif" />
+    <Content Include="Images\Stickers\Bad Monkey\viberstickers.ru_03101.png" />
+    <Content Include="Images\Stickers\Bad Monkey\viberstickers.ru_03105.png" />
+    <Content Include="Images\Stickers\Bad Monkey\viberstickers.ru_03110.png" />
+    <Content Include="Images\Stickers\Bad Monkey\viberstickers.ru_03129.png" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bloodhound.js" />
@@ -346,6 +350,7 @@
     <Content Include="Views\Profile\_PhotoView.cshtml" />
     <Content Include="Views\Profile\Edit.cshtml" />
     <Content Include="Views\Shared\_Player.cshtml" />
+    <Content Include="Views\Shared\_Sticker.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -14,17 +14,17 @@
     width: 100%;
 }
 
-img {
-    background-color: rgb(70, 70, 70);
-}
-
-    img:hover {
-        background-color: rgb(50, 170, 220);
+    .player img {
+        background-color: rgb(70, 70, 70);
     }
 
-img, .pbar-container, .sbar-container {
-    cursor: pointer;
-}
+        .player img:hover {
+            background-color: rgb(50, 170, 220);
+        }
+
+    .player img, .pbar-container, .sbar-container {
+        cursor: pointer;
+    }
 
 /* The Containers */
 

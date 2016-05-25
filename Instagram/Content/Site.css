@@ -293,3 +293,12 @@
         .profile-edit .edit-form .form-horizontal .control-label {
             text-align: left;
         }
+
+.sticker-list {
+    width: 450px;
+}
+
+    .sticker-list img {
+        width: 100px;
+        height: 100px;
+    }

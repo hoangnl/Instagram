@@ -11,6 +11,7 @@ namespace Instagram.Helpers
     public class FileProcessor : IFileProcessor
     {
         string saveToFolder = "files";
+        string stickerFolder = "/Images/Stickers/";
         int fileType = 1;
         public IEnumerable<FileViewModel> ProcessFile(IEnumerable<HttpPostedFileBase> uploadFiles)
         {
@@ -135,6 +136,25 @@ namespace Instagram.Helpers
             }
             return user;
 
+        }
+
+
+        public List<string> GetStickerFolderList()
+        {
+
+            return Directory.GetDirectories(HttpContext.Current.Server.MapPath(stickerFolder)).ToList();
+        }
+
+        public List<string> GetStickerFileList(string folder)
+        {
+            var filesList = new List<string>();
+            var combine = stickerFolder + folder + "/";
+            var path = HttpContext.Current.Server.MapPath(combine);
+            foreach (var item in Directory.GetFiles(path))
+            {
+                filesList.Add(combine + Path.GetFileName(item));
+            }
+            return filesList;
         }
     }
 }

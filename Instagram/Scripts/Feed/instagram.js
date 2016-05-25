@@ -153,7 +153,6 @@ function FormatDate() {
         var local = moment.utc(utcDate).local();
         var formattedDate = "";
         var days = moment().diff(local, 'days');
-        console.log(days);
         if (days > 1) {
             formattedDate = local.locale('en').format('DD/MM/YYYY HH:mm');
         }
@@ -164,4 +163,7 @@ function FormatDate() {
     });
 }
 
+$(document).on('click', '.user-detail .dropdown-menu', function (e) {
+    e.stopPropagation();
+});
 
