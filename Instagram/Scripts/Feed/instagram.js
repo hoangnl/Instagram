@@ -76,17 +76,20 @@ $(function () {
     });
 });
 
-$('*[data-poload]').hover(function () {
-    var e = $(this);
-    e.off('hover');
-    $.get(e.data('poload'), function (d) {
-        e.popover({
-            content: d,
-            html: true,
-            container: 'body'
-        }).popover('show');
+$(function () {
+    $('*[data-poload]').hover(function () {
+        var e = $(this);
+        e.off('hover');
+        $.get(e.data('poload'), function (d) {
+            e.popover({
+                content: d,
+                html: true,
+                container: 'body'
+            }).popover('show');
+        });
     });
 });
+
 
 $('body').on('click', function (e) {
     //only buttons
@@ -96,6 +99,7 @@ $('body').on('click', function (e) {
     }
 });
 
+//Dropzone.autoDiscover = false;
 Dropzone.options.photo = { // The camelized version of the ID of the form element
 
     // The configuration we've talked about above
@@ -127,8 +131,7 @@ Dropzone.options.photo = { // The camelized version of the ID of the form elemen
             // Hide the success button or the complete form.
         });
         this.on("successmultiple", function (files, response) {
-            // Gets triggered when the files have successfully been sent.
-            // Redirect user or notify of success.
+            location.reload();
         });
         this.on("errormultiple", function (files, response) {
             // Gets triggered when there was an error sending the files.
@@ -144,6 +147,7 @@ $(function () {
 });
 
 function FormatDate() {
+    //alert("test");
     $('.local-datetime').each(function () {
         var $this = $(this), utcDate = parseInt($this.attr('data-utc'), 10) || 0;
 

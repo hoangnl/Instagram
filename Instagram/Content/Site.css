@@ -192,11 +192,15 @@
     width: 100%;
     padding: 10px;
     text-align: center;
-    color: white;
+    color: #4D7EDD;
 }
 
     .dropzone .dz-message {
         margin: 10px 0;
+    }
+
+    .dropzone span .glyphicon {
+        font-size: 2em;
     }
 
 .caption {

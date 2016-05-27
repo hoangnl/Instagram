@@ -58,9 +58,9 @@
                 @using (Html.BeginForm("PostPhoto", "Home", FormMethod.Post, new { enctype = "multipart/form-data", @class = "dropzone", id = "photo" }))
                 {
                     @Html.AntiForgeryToken()
-                    <div class="modal-body">
+                    <div class="modal-body" id="post-photo">
                         <textarea class="form-control input-lg" name="Caption" autofocus placeholder="Nội dung chú thích ảnh của bạn"></textarea>
-                        <div class="dz-message" data-dz-message><span>Bạn có thể kéo ảnh hoặc click để chọn</span></div>
+                        <div class="dz-message" data-dz-message="Bạn có thể kéo ảnh hoặc click để chọn"><span>Bạn có thể kéo ảnh hoặc click để chọn <i class="glyphicon glyphicon-camera"></i></span></div>
                     </div>
                     <div class="modal-footer">
                         @*<ul class="pull-left list-inline">
