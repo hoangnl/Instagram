@@ -100,7 +100,7 @@ namespace Instagram.Controllers
         [HttpPost]
         public ActionResult Like(long feedId)
         {
-            
+
             var userId = userHelper.GetCurrentUserIdFromClaim(User);
             bool likeResult = feedService.LikeFeed(userId, feedId);
             var feedLikeSummary = new FeedLikeSummary()
@@ -115,7 +115,7 @@ namespace Instagram.Controllers
         [HttpPost]
         public ActionResult Unlike(long feedId)
         {
-            
+
             var userId = userHelper.GetCurrentUserIdFromClaim(User);
             bool likeResult = feedService.UnlikeFeed(userId, feedId);
             var feedLikeSummary = new FeedLikeSummary()
@@ -129,7 +129,7 @@ namespace Instagram.Controllers
 
         [HttpPost]
         public ActionResult Comment(long feedId, string content)
-        {            
+        {
             var userId = userHelper.GetCurrentUserIdFromClaim(User);
             var feedCommentViewModel = feedService.Comment(feedId, userId, content);
             return PartialView("_CommentView", feedCommentViewModel);
@@ -145,7 +145,7 @@ namespace Instagram.Controllers
         [HttpPost]
         public ActionResult LikeComment(long feedCommentId)
         {
-            
+
             var userId = userHelper.GetCurrentUserIdFromClaim(User);
             bool likeResult = feedService.LikeFeed(userId, feedCommentId);
             var feedLikeSummary = new FeedLikeSummary()
@@ -160,7 +160,7 @@ namespace Instagram.Controllers
         [HttpPost]
         public ActionResult UnlikeComment(long feedCommentId)
         {
-            
+
             var userId = userHelper.GetCurrentUserIdFromClaim(User);
             bool likeResult = feedService.LikeFeed(userId, feedCommentId);
             var feedLikeSummary = new FeedLikeSummary()
@@ -271,7 +271,7 @@ namespace Instagram.Controllers
             return Json(users, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult GetStickersList()
+        public ActionResult GetStickersList(long feedId)
         {
             var stickerList = new List<StickerViewModel>();
             var stickerFolderList = fileProcessor.GetStickerFolderList();
@@ -280,11 +280,22 @@ namespace Instagram.Controllers
                 var path = Path.GetFileName(stickerFolder);
                 stickerList.Add(new StickerViewModel()
                 {
+                    FeedId = feedId,
                     Folder = path,
                     Path = fileProcessor.GetStickerFileList(path)
                 });
             }
             return PartialView("_Sticker", stickerList);
         }
+
+
+        [HttpPost]
+        public ActionResult PostSticker(long feedId, string content)
+        {
+            var userId = userHelper.GetCurrentUserIdFromClaim(User);
+            var feedCommentViewModel = feedService.Comment(feedId, userId, content);
+            return PartialView("_CommentView", feedCommentViewModel);
+        }
+
     }
 }

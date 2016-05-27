@@ -8,6 +8,7 @@ namespace Instagram.ViewModel.Feed
 {
     public class StickerViewModel
     {
+        public long FeedId { get; set; }
         public string Folder { get; set; }
 
         public List<string> Path { get; set; }

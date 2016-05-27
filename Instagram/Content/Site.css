@@ -221,7 +221,8 @@
 #top-link-block.affix {
     position: fixed; /* keeps it on the bottom once in view */
     bottom: 18px;
-    left: 50%;
+    right: 20px;
+    z-index: 9999;
 }
 
 .profile {
@@ -301,4 +302,5 @@
     .sticker-list img {
         width: 100px;
         height: 100px;
+        cursor: pointer;
     }

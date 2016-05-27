@@ -11,11 +11,13 @@
             <a href="/Profile/Detail/@Model.User.UserName" title="@Model.User.FullName">@Model.User.FullName</a>
 
         </h7>
-        @Model.Content
-        @*<div>
-                @Html.Partial("_LikeView")
-            </div>*@
-
+        @if (Model.Content.StartsWith("/"))
+        {
+            <img src="@Url.Content(Model.Content)" class="img-responsive sticker" alt="sticker" />
+        }
+        else {
+            @Model.Content
+        }
         <div>
             <a href="">@Model.FeedCommentLikes.Count() thích</a>
             <span class="local-datetime"

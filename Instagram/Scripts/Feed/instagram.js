@@ -167,3 +167,24 @@ $(document).on('click', '.user-detail .dropdown-menu', function (e) {
     e.stopPropagation();
 });
 
+
+$(document).on('click', '.sticker-list img', function (e) {
+    var content = $(this).attr('src');
+    var feedId = $(this).attr('name');
+    $.ajax({
+        type: 'POST',
+        url: "/Home/PostSticker",
+        data: {
+            "feedId": feedId,
+            "content": content,
+        },
+        success: function (data, textstatus) {
+            $("#commentList" + feedId).append(data);
+            $('[data-toggle="dropdown"]').parent().removeClass('open');
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+        }
+    });
+});
+
+

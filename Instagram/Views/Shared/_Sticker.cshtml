@@ -18,16 +18,19 @@
                         Value = x
                     }).GroupBy(x => x.Index / 4).Select(x => x.Select(v => v.Value).ToList()).ToList();
                 }
-                @foreach (var photos in photoGroups)
+                @using (Html.BeginForm("PostSticker", "Home", FormMethod.Post, new { feedId = Model.ElementAt(i).FeedId }))
                 {
-                    <div class="row">
-                        @foreach (var photo in photos)
+                    foreach (var photos in photoGroups)
+                    {
+                        <div class="row">
+                            @foreach (var photo in photos)
                         {
-                            <div class="col-sm-3">
-                                <img src="@Url.Content(photo)" class="img-responsive sticker" alt="Avatar" />
-                            </div>
-                        }
-                    </div>
+                                <div class="col-sm-3">
+                                    <img src="@Url.Content(photo)" class="img-responsive sticker" alt="sticker" name="@(Model.ElementAt(i).FeedId)" />
+                                </div>
+                            }
+                        </div>
+                    }
                 }
             </div>
                     }
