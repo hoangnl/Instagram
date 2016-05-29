@@ -242,6 +242,19 @@
     <Content Include="Images\Stickers\Bad Monkey\viberstickers.ru_03105.png" />
     <Content Include="Images\Stickers\Bad Monkey\viberstickers.ru_03110.png" />
     <Content Include="Images\Stickers\Bad Monkey\viberstickers.ru_03129.png" />
+    <Content Include="Images\Stickers\Clone\viberstickers.ru_03101.png" />
+    <Content Include="Images\Stickers\Clone\viberstickers.ru_03105.png" />
+    <Content Include="Images\Stickers\Clone\viberstickers.ru_03110.png" />
+    <Content Include="Images\Stickers\Clone\viberstickers.ru_03111.png" />
+    <Content Include="Images\Stickers\Clone\viberstickers.ru_03129.png" />
+    <Content Include="Images\Stickers\Clone\viberstickers.ru_03131.png" />
+    <Content Include="Images\Stickers\Fun\12871453_1323954357675450_4187458247842460613_n.jpg" />
+    <Content Include="Images\Stickers\Fun\12871468_1324834974254055_4317417792674847239_n.jpg" />
+    <Content Include="Images\Stickers\Fun\12871472_1323955117675374_611181547450551316_n.jpg" />
+    <Content Include="Images\Stickers\Fun\13087490_1320051628065723_9022879911872638020_n.jpg" />
+    <Content Include="Images\Stickers\Fun\13165951_1323954497675436_1930485654845474448_n.jpg" />
+    <Content Include="Images\Stickers\Fun\13221043_1320052148065671_2350074102833731162_n.jpg" />
+    <Content Include="Images\Stickers\Fun\941905_1320051918065694_4066187111291708187_n.jpg" />
     <Content Include="Scripts\ai.0.15.0-build58334.js" />
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bloodhound.js" />
@@ -251,7 +264,6 @@
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="App_Data\Customers.csv" />
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -334,8 +346,6 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Home\Search.cshtml" />
-    <Content Include="Views\InfiniteScrollDemo\_CustomerRow.cshtml" />
-    <Content Include="Views\InfiniteScrollDemo\Index.cshtml" />
     <Content Include="Views\Home\_FeedView.cshtml" />
     <Content Include="Views\Home\_CommandView.cshtml" />
     <Content Include="Views\Home\_CommentView.cshtml" />
@@ -352,7 +362,9 @@
     <Content Include="Views\Shared\_Player.cshtml" />
     <Content Include="Views\Shared\_Sticker.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
