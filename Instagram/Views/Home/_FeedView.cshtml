@@ -36,7 +36,7 @@
                         }
                         else
                         {
-                            <img src="@Url.Content(feed.Files.FirstOrDefault().PhotoLink)" class="img-responsive" alt="Photo" />
+                            <img src="@Url.Content(feed.Files.FirstOrDefault().PhotoLink)" class="img-responsive feed" alt="Photo" />
                         }
                     }
 
@@ -56,7 +56,7 @@
                                 @for (int i = 0; i < feed.Files.Count(); i++)
                                 {
                                     <div class="item @(i == 0 ? "active" : string.Empty)">
-                                        <img src="@Url.Content(feed.Files.ElementAt(i).PhotoLink)" alt="@feed.Files.ElementAt(i).FileName">
+                                        <img src="@Url.Content(feed.Files.ElementAt(i).PhotoLink)" alt="@feed.Files.ElementAt(i).FileName" class="img-responsive feed">
                                     </div>
                                 }
                             </div>

@@ -93,7 +93,7 @@
     }
 
 #postModel > div > div > div.modal-header {
-    background-color: #4D7EDD;
+    background-color: #365899;
     color: #fff;
 }
 
@@ -184,6 +184,10 @@
 
 #photo .modal-body {
     padding: 0;
+}
+
+.photo .img-responsive .feed {
+    max-height: 200px;
 }
 
 .dropzone {
@@ -308,3 +312,7 @@
         height: 100px;
         cursor: pointer;
     }
+
+.sticker {
+    max-width: 150px;
+}
