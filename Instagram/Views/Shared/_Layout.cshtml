@@ -25,7 +25,7 @@
                         @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @class = "navbar-form" }))
                         {
                             <div id="bloodhound" class="form-group">
-                                @Html.TextBox("searchTerm", "", new { @id = "searchTerm", @class = "form-control typeahead", placeholder = "Tìm kiếm...", data_provide = "typeahead" })
+                                @Html.TextBox("searchTerm", "", new { @id = "searchTerm", @class = "form-control typeahead search", placeholder = "Tìm kiếm...", data_provide = "typeahead" })
                             </div>
                         }
                     </li>
@@ -76,7 +76,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p class="text-center">&copy; @DateTime.Now.Year - Moments.vn</p>
+            <p class="text-center">&copy; @DateTime.Now.Year - Mạng xã hội chia sẻ hình ảnh</p>
         </footer>
     </div>
     <div id="modal-container" class="modal fade"

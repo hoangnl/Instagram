@@ -316,3 +316,21 @@
 .sticker {
     max-width: 150px;
 }
+
+.search {
+    width: 300px !important;
+}
+
+.tt-menu .user {
+    margin: 0;
+}
+
+.tt-suggestion {
+    height: 50px;
+}
+
+    .tt-suggestion:hover { /* UPDATE: newer versions use .tt-suggestion.tt-cursor */
+        color: #fff !important;
+        background-color: #0097cf !important;
+        cursor: pointer !important;
+    }

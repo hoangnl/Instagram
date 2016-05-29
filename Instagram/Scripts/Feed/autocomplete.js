@@ -58,7 +58,12 @@ $(function () {
         source: usernames.ttAdapter(),
         templates: {
             suggestion: function (data) {
-                return '<p>' + '<img src="' + data.symbol + '" class="img-responsive user-avatar" alt="Avatar" />' + data.name + '</p>';
+                return '<div class="user">' +
+                    '<img src="' + data.symbol + '" class="img-circle img-responsive user-avatar" alt="Avatar" />' +
+                    '<div class="user-detail">' +
+                     '<h7><b>' + data.name + '</b></h7>' +
+                     '</div>'
+                     '</div>';
             }
         }
     }).on('typeahead:selected', function (obj, stock) {
