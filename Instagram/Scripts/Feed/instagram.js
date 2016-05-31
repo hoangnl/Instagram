@@ -142,11 +142,11 @@ Dropzone.options.photo = { // The camelized version of the ID of the form elemen
 }
 
 
-$(function () {
-    FormatDate();
+$( document ).ajaxComplete(function() {
+    formatDate();
 });
 
-function FormatDate() {
+function formatDate() {
     //alert("test");
     $('.local-datetime').each(function () {
         var $this = $(this), utcDate = parseInt($this.attr('data-utc'), 10) || 0;
