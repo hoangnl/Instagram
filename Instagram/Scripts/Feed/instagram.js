@@ -147,7 +147,11 @@ Dropzone.options.photo = { // The camelized version of the ID of the form elemen
 }
 
 
+<<<<<<< HEAD
 $(function () {
+=======
+$( document ).ajaxComplete(function() {
+>>>>>>> 01727956a57b2162532279eda03b50b371acb4b9
     formatDate();
 });
 
