@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Instagram.Common", "Instagr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Instagram.Test", "Instagram.Test\Instagram.Test.csproj", "{4504B20E-0993-46CC-87AE-A8033F60A07C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Instagram.WebApi", "Instagram.WebApi\Instagram.WebApi.csproj", "{375B5C9A-5135-49F7-B600-7C866896982C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{4504B20E-0993-46CC-87AE-A8033F60A07C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4504B20E-0993-46CC-87AE-A8033F60A07C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4504B20E-0993-46CC-87AE-A8033F60A07C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{375B5C9A-5135-49F7-B600-7C866896982C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{375B5C9A-5135-49F7-B600-7C866896982C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{375B5C9A-5135-49F7-B600-7C866896982C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{375B5C9A-5135-49F7-B600-7C866896982C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
