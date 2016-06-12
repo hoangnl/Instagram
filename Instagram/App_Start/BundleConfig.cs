@@ -46,7 +46,9 @@ namespace Instagram
                       "~/Content/site.css",
                       "~/Content/typeahead.css",
                       "~/Scripts/dropzone/dropzone.css",
-                      "~/Content/player.css"));
+                      "~/Content/player.css",
+                      "~/Content/themes/base/autocomplete.css",
+                      "~/Content/themes/base/theme.css"));
         }
     }
 }

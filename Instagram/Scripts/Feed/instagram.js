@@ -21,6 +21,8 @@ function loadMoreToInfiniteScrollTable(loadMoreRowsUrl) {
             success: function (data, textstatus) {
                 if (data != '') {
                     $("#newFeedsList").append(data);
+                    formatDate();
+                    loadingHover();
                 }
                 else {
                     page = -1;
@@ -77,6 +79,10 @@ $(function () {
 });
 
 $(function () {
+    loadingHover();
+});
+
+function loadingHover() {
     $('*[data-poload]').hover(function () {
         var e = $(this);
         e.off('hover');
@@ -88,8 +94,7 @@ $(function () {
             }).popover('show');
         });
     });
-});
-
+}
 
 $('body').on('click', function (e) {
     //only buttons
@@ -143,10 +148,10 @@ Dropzone.options.photo = { // The camelized version of the ID of the form elemen
 
 
 $(function () {
-    FormatDate();
+    formatDate();
 });
 
-function FormatDate() {
+function formatDate() {
     //alert("test");
     $('.local-datetime').each(function () {
         var $this = $(this), utcDate = parseInt($this.attr('data-utc'), 10) || 0;

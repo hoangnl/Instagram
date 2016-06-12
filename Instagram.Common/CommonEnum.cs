@@ -28,4 +28,15 @@ namespace Instagram.Common
         PNG = 4,
         MP4 = 5
     }
+
+    public enum MessageStatusTypes
+    {
+        Unread = 1,
+        Read = 2
+    }
+
+    public enum MessageTypes
+    {
+        Message = 1
+    }
 }

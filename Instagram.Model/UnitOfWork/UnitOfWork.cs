@@ -45,6 +45,12 @@ namespace Instagram.Model.UnitOfWork
         private IUserFollowRepository userFollowRepository;
 
         private IAspNetUserRepository aspNetUserRepository;
+
+        IMessageRepository messageRepository;
+
+        IMessageTypeRepository messageTypeRepository;
+
+        IMessageStatusTypeRepository messageStatusTypeRepository;
         #endregion
 
         #region Property
@@ -102,6 +108,10 @@ namespace Instagram.Model.UnitOfWork
 
                 return userRepository;
             }
+            set
+            {
+                userRepository = value;
+            }
         }
 
         public IFileRepository FileRepository
@@ -153,6 +163,49 @@ namespace Instagram.Model.UnitOfWork
                 }
 
                 return feedCommentRepository;
+            }
+        }
+
+        public IMessageRepository MessageRepository
+        {
+            get
+            {
+                if (messageRepository == null)
+                {
+                    messageRepository = new MessageRepository(DatabaseFactory);
+                }
+
+                return messageRepository;
+            }
+            set
+            {
+                messageRepository = value;
+            }
+        }
+
+        public IMessageTypeRepository MessageTypeRepository
+        {
+            get
+            {
+                if (messageTypeRepository == null)
+                {
+                    messageTypeRepository = new MessageTypeRepository(DatabaseFactory);
+                }
+
+                return messageTypeRepository;
+            }
+        }
+
+        public IMessageStatusTypeRepository MessageStatusTypeRepository
+        {
+            get
+            {
+                if (messageStatusTypeRepository == null)
+                {
+                    messageStatusTypeRepository = new MessageStatusTypeRepository(DatabaseFactory);
+                }
+
+                return messageStatusTypeRepository;
             }
         }
         #endregion

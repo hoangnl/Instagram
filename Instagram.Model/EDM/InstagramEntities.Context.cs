@@ -35,5 +35,8 @@ namespace Instagram.Model.EDM
         public virtual DbSet<FileType> FileTypes { get; set; }
         public virtual DbSet<UserFollow> UserFollows { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<Message> Messages { get; set; }
+        public virtual DbSet<MessageStatusType> MessageStatusTypes { get; set; }
+        public virtual DbSet<MessageType> MessageTypes { get; set; }
     }
 }

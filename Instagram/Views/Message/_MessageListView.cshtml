@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Instagram.ViewModel.Feed.MessageViewModel>
+
+<span class="chat-title" id="userNameTitle">@ViewBag.ActiveUserName</span>
+<div class="clearfix"></div>
+<hr />
+<div id="messageList" class="messageList">
+    @foreach (var message in Model)
+    {
+        @Html.Partial("_MessageView", message)
+    }
+</div>
+<div id="typing" style="display:none">
+    <img src='@Url.Content("~/images/typing.gif")' />
+</div>
+<hr />
+<div class="messageBox">
+    <input type="text" name="message" id="messageText" class="form-control" autocomplete="off" placeholder="Gửi tin nhắn ..." onkeyup="messageTextTyping(event)" />
+</div>

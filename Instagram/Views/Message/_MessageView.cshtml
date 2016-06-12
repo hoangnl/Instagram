@@ -1,0 +1,15 @@
+﻿@model Instagram.ViewModel.Feed.MessageViewModel
+
+<div class="user">
+    <a href="/Profile/Detail/@Model.User.UserName">
+        <img class="img-responsive user-avatar" alt="Avatar" src="@Url.Content(Model.User.Avartar)" />
+    </a>
+    <div class="user-detail">
+        <a href="/Profile/Detail/@Model.User.UserName" title="@Model.User.FullName" class="user-fullname">@Model.User.FullName</a>
+        <div class="datetime-format pull-right">
+            @Model.CreateDate
+        </div>
+        <br />
+        @Model.Body
+    </div>
+</div>

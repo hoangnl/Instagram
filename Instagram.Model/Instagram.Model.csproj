@@ -100,6 +100,15 @@
       <DependentUpon>InstagramEntities.edmx</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="EDM\Message.cs">
+      <DependentUpon>InstagramEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\MessageStatusType.cs">
+      <DependentUpon>InstagramEntities.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\MessageType.cs">
+      <DependentUpon>InstagramEntities.tt</DependentUpon>
+    </Compile>
     <Compile Include="EDM\User.cs">
       <DependentUpon>InstagramEntities.tt</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -113,11 +122,17 @@
     <Compile Include="Repository\FileRepository.cs" />
     <Compile Include="Repository\FeedLikeRepository.cs" />
     <Compile Include="Repository\IFileRepository.cs" />
+    <Compile Include="Repository\IMessageStatusTypeRepository.cs" />
+    <Compile Include="Repository\IMessageRepository.cs" />
     <Compile Include="Repository\IUserFollowRepository.cs" />
     <Compile Include="Repository\IAspNetUserRepository.cs" />
+    <Compile Include="Repository\IMessageTypeRepository.cs" />
     <Compile Include="Repository\IUserRepository.cs" />
+    <Compile Include="Repository\MessageTypeRepository.cs" />
+    <Compile Include="Repository\MessageStatusTypeRepository.cs" />
     <Compile Include="Repository\UserFollowRepository.cs" />
     <Compile Include="Repository\AspNetUserRepository.cs" />
+    <Compile Include="Repository\MessageRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Repository\FeedRepository.cs" />
     <Compile Include="Repository\IFeedRepository.cs" />

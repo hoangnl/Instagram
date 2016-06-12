@@ -1,0 +1,76 @@
+﻿@using Microsoft.AspNet.Identity
+@model Instagram.ViewModel.Feed.MessageWrapperViewModel
+
+@{
+    ViewBag.Title = "Tin nhắn";
+}
+
+<div class="col-sm-12 message">
+    <div class="row">
+        <div class="col-sm-3 historyview">
+            <div class="form-group">
+                @Html.TextBox("searchText", null, new { @name = "searchText", @class = "form-control", placeholder = "Tìm..." })
+            </div>
+            <div class="list-group">
+                @using (Ajax.BeginForm("SelectMessage", null, new AjaxOptions
+                {
+                    InsertionMode = InsertionMode.Replace,
+                    HttpMethod = "POST",
+                    UpdateTargetId = "messagePanel"
+                }, new { id = "historyMessagePane" }))
+                {
+                    @Html.AntiForgeryToken()
+                    var i = 0;
+                    foreach (var user in Model.Users)
+                    {
+                        <a href="#" id="user@(i)" onclick="userItemClick('user@(i)','@user.FullName', '@user.UserId')" class="list-group-item @(i == 0? "active":"")">
+                            <div class="user">
+                                <img class="img-responsive user-avatar" alt="Avatar" src="@Url.Content(user.Avartar)" />
+                                <div class="user-detail">
+                                    <label class="user-fullname">@user.FullName</label>
+                                </div>
+                            </div>
+                        </a>
+                        i++;
+                    }
+                    @Html.Hidden("userId");
+                    @Html.Hidden("fullName");
+                }
+            </div>
+        </div>
+        <div class="col-sm-9 messageview">
+            <div id="edit-profile">
+                <div class="pull-left">
+                    <input type="text" class="form-control" style="display:none" id="toUserName" placeholder="Chọn người gửi..." />
+                </div>
+                <div class="pull-right">
+                    <button class="btn btn-success" value="Gửi tin nhắn" id="newMessage" onclick="newMessageClick()">Tạo tin nhắn mới</button>
+                </div>
+                <div id="messagePanel" class="messagePanel">
+                    @if (Model.Messages != null)
+                    {
+                        @Html.Partial("_MessageListView", Model.Messages)
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="message-template" style="display:none">
+
+</div>
+@Html.Hidden("currentUserId", User.Identity.GetUserId())
+@Html.Hidden("toUserId", Model.Users.FirstOrDefault() != null ? Model.Users.FirstOrDefault().UserId : "")
+@section scripts{
+    <script src="~/Scripts/jquery.signalR-2.1.2.min.js"></script>
+    <script src="~/Signalr/Hubs"></script>
+    <script src="~/Scripts/jquery-ui-1.11.4.min.js"></script>
+    <script src="~/Scripts/Feed/message.js"></script>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $('#message-template').load('/Content/html/message.html');
+        });
+
+    </script>
+}

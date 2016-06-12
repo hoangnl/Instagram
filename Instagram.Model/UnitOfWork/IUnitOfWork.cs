@@ -11,7 +11,7 @@ namespace Instagram.Model.UnitOfWork
     {
         IFeedRepository FeedRepository { get; }
 
-        IUserRepository UserRepository { get; }
+        IUserRepository UserRepository { get; set; }
 
         IFileRepository FileRepository { get; }
         IFeedLikeRepository FeedLikeRepository { get; }
@@ -20,6 +20,12 @@ namespace Instagram.Model.UnitOfWork
         IUserFollowRepository UserFollowRepository { get; }
 
         IAspNetUserRepository AspNetUserRepository { get; }
+
+        IMessageRepository MessageRepository { get; set; }
+
+        IMessageTypeRepository MessageTypeRepository { get; }
+
+        IMessageStatusTypeRepository MessageStatusTypeRepository { get; }
 
         bool Commit();
     }

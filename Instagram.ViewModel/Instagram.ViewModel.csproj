@@ -56,6 +56,11 @@
     <Compile Include="Feed\StickerViewModel.cs" />
     <Compile Include="Feed\FileViewModel.cs" />
     <Compile Include="Feed\UserFollowViewModel.cs" />
+    <Compile Include="Message\MessageViewModel.cs" />
+    <Compile Include="Message\MessageStatusTypeViewModel.cs" />
+    <Compile Include="Message\MessageTypeViewModel.cs" />
+    <Compile Include="Message\MessageWrapperViewModel.cs" />
+    <Compile Include="Message\PrivateMessageViewModel.cs" />
     <Compile Include="User\UserProfileViewModel.cs" />
     <Compile Include="Feed\UserViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

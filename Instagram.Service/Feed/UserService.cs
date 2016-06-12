@@ -229,7 +229,16 @@ namespace Instagram.Service.Feed
             {
                 var config = new MapperConfiguration(c =>
                 {
-                    c.CreateMap<Model.EDM.User, UserViewModel>();
+                    c.CreateMap<Model.EDM.FeedLike, FeedLikeViewModel>();
+                    c.CreateMap<Model.EDM.User, UserViewModel>().AfterMap((s, d) =>
+                    {
+                        d.UserName = UnitOfWork.AspNetUserRepository.GetBy(e => e.Id == s.UserId).UserName;
+                        d.Avartar = ImageCommon.GetAvatarLink(s.UserId, s.FileTypeId, s.FileType);
+                    });
+                    c.CreateMap<Model.EDM.Feed, FeedViewModel>();
+                    c.CreateMap<Model.EDM.FeedComment, FeedCommentViewModel>();
+                    c.CreateMap<Model.EDM.File, FileViewModel>().AfterMap((s, d) => d.PhotoLink = string.Format("~/" + s.FileFolder.Path + "/{0}/{1}", string.Concat(s.CreatedDate.Year.ToString(), s.CreatedDate.Month.ToString()), s.FileName.ToString() + "_O." + s.FileType.Name));
+                    c.CreateMap<Model.EDM.FileType, FileTypeViewModel>();
                 });
                 var mapper = config.CreateMapper();
                 userViewModels = mapper.Map<IEnumerable<UserViewModel>>(userList);

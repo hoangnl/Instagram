@@ -8,6 +8,7 @@ namespace Instagram.ViewModel.Feed
 {
     public class UserViewModel
     {
+        public string ConnectionId { get; set; }
         public string UserId { get; set; }
         public string FullName { get; set; }
         public string Avartar { get; set; }

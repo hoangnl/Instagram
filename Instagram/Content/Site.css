@@ -334,3 +334,40 @@
         background-color: #0097cf !important;
         cursor: pointer !important;
     }
+
+.message {
+    padding-top: 20px;
+    background: #fff;
+}
+
+    .message .historyview {
+        margin: 0 0 15px 0;
+    }
+
+        .message .historyview .user {
+            overflow: hidden;
+        }
+
+    .message .messageList {
+        padding: 5px 0 0 0;
+    }
+
+        .message .messageList .user {
+            margin: 10px 0;
+        }
+
+            .message .messageList .user .user-avatar {
+                width: 36px;
+                height: 36px;
+                float: left;
+            }
+
+            .message .messageList .user .user-detail {
+                position: relative;
+                top: -5px;
+            }
+
+    .message .messageBox input {
+        max-width: 100%;
+        margin: 0 0 10px 0;
+    }

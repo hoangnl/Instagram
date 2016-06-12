@@ -23,6 +23,8 @@ namespace Instagram.Model.EDM
             this.FeedLikes = new HashSet<FeedLike>();
             this.UserFollows = new HashSet<UserFollow>();
             this.UserFollows1 = new HashSet<UserFollow>();
+            this.Messages = new HashSet<Message>();
+            this.Messages1 = new HashSet<Message>();
         }
     
         public string UserId { get; set; }
@@ -49,5 +51,9 @@ namespace Instagram.Model.EDM
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<UserFollow> UserFollows1 { get; set; }
         public virtual FileType FileType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Message> Messages { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Message> Messages1 { get; set; }
     }
 }

@@ -28,6 +28,13 @@
         <AssociationConnector Association="InstagramModel.FK_UserFollow_User1" />
         <EntityTypeShape EntityType="InstagramModel.AspNetUser" Width="1.5" PointX="8.375" PointY="9.75" />
         <AssociationConnector Association="InstagramModel.FK_User_FileType" />
+        <EntityTypeShape EntityType="InstagramModel.Message" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="InstagramModel.MessageStatusType" Width="1.5" PointX="0.75" PointY="11.5" />
+        <EntityTypeShape EntityType="InstagramModel.MessageType" Width="1.5" PointX="0.75" PointY="2" />
+        <AssociationConnector Association="InstagramModel.FK_Message_MessageStatusType" />
+        <AssociationConnector Association="InstagramModel.FK_Message_MessageType" />
+        <AssociationConnector Association="InstagramModel.FK_Message_User" />
+        <AssociationConnector Association="InstagramModel.FK_Message_User1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
