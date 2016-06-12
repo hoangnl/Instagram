@@ -83,8 +83,8 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="LogAnalyzer.cs" />
-    <Compile Include="LogAnalyzer1.cs" />
+    <Compile Include="Message\MessageServiceTest.cs" />
+    <Compile Include="Message\MessageControllerTest.cs" />
     <Compile Include="ProfileControllerTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -93,6 +93,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Instagram.Model\Instagram.Model.csproj">
+      <Project>{99fa424b-bd52-4ff0-a250-de7ef52a0e8c}</Project>
+      <Name>Instagram.Model</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Instagram.Service\Instagram.Service.csproj">
       <Project>{1c0d9364-3517-4967-ba81-3cd87428c723}</Project>
       <Name>Instagram.Service</Name>
