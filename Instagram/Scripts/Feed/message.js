@@ -6,7 +6,7 @@ function userItemClick(elementId, fullName, userId) {
     //add the active class to the link we clicked
     $("#" + elementId).addClass('active');
 
-    event.preventDefault();
+    //event.preventDefault();
 
     //Lưu các giá trị vào hidden field để sử dụng lại khi submit form
     $("#userId, #toUserId").val(userId);

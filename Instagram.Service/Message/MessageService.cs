@@ -121,6 +121,7 @@ namespace Instagram.Service.Message
                     cfg.CreateMap<Model.EDM.FeedLike, FeedLikeViewModel>();
                     cfg.CreateMap<Model.EDM.FeedCommentLike, FeedCommentLikeViewModel>();
                     cfg.CreateMap<Model.EDM.File, FileViewModel>();
+                    cfg.CreateMap<Model.EDM.FileType, FileTypeViewModel>();
                     cfg.CreateMap<Model.EDM.MessageType, MessageTypeViewModel>();
                     cfg.CreateMap<Model.EDM.MessageStatusType, MessageStatusTypeViewModel>();
                 });
